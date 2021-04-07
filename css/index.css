@@ -1,4 +1,4 @@
-.corfundo{
+.corpo{
     background-color: rgb(233, 233, 233);
 }
 .navbar{
@@ -12,7 +12,7 @@
 }
 footer{
     margin-top: 10px;
-    background-color: rgba(185, 185, 185, 0.849);
+    background-color: rgb(221, 221, 221);
    
 }
 footer a{
