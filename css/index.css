@@ -1,9 +1,10 @@
 .corpo{
-    background-color: rgb(255, 255, 255);
+    
+    background-image: radial-gradient(circle at 14.64% 111.24%, #ffffff 0, #ffffff 16.67%, #ffffff 33.33%, #ffffff 50%, #eaf3f0 66.67%, #d7e7e1 83.33%, #c7ddd3 100%);
 }
 .navbar{
-    background-color: rgba(250, 250, 250, 0.76);
-    
+    background-image: linear-gradient(60deg, #8d98ff 0, #536ddd 25%, #184294 50%, #001b51 75%, #00001a 100%);
+
 }
 .carousel{
     margin-bottom: 10px;
@@ -12,12 +13,23 @@
 }
 footer{
     margin-top: 10px;
-    background-color: rgb(255, 255, 255);
-   
+    background-image: radial-gradient(circle at 0% 100%, #e3f1ff 0, #9dbcff 25%, #5a86ff 50%, #1753aa 75%, #00275f 100%);
 }
 footer a{
  text-decoration: none;
+    
 }
 footer a#cartoes{
     margin-right: 150px;
+}
+
+.navbar li{
+    color: bisque;
+}
+.promo{
+    text-align: center;
+    border: 2px inset rgb(186, 186, 204);
+    border-radius: 15px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }

@@ -13,7 +13,7 @@
         <!--CABEÇALHO-->   
 <header>
 
-  <nav class="navbar navbar-expand-lg navbar-light ">
+  <nav class="navbar navbar-expand-lg navbar-dark ">
     
     <div class="container-fluid">
     <a class="navbar-brand" href="home.html">COMPRA CERTA 🛒</a>
@@ -49,12 +49,13 @@
           <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
           <button class="btn btn-dark me-5" type="submit">Buscar</button>
           <a class="nav-link " href="pedidos.html">
-           <img src="imagens/icons/cart4.svg" alt="Carinho de compras" width="30" height="24" class="d-inline-block align-top">
+           <img src="imagens/icons/shopping_cart_white_24dp.svg" alt="Carinho de compras" width="30" height="24" class="d-inline-block align-top text-white">
          </a>
-           <a class="nav-link " href="#" data-toggle="modal" data-target="#login">
-            <img src="imagens/icons/login-dark.svg" alt="login" width="30" height="25" class="d-inline-block align-top">
+           <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+            <img src="imagens/icons/account_circle_white_24dp.svg" alt="login" width="30" height="25" class="d-inline-block align-top">
          </a>
       </form>
+
      </div>
     </div>
   
@@ -62,6 +63,54 @@
 </header>
 <!--CABEÇALHO-->
 
+    <!--PROMOÇÕES-->
+  <div class="promo ">
+    <h1>
+      PROMOÇÕES
+    </h1>
+
+    <div class="row row-cols-md-2 row-cols-md-3 g-0">
+
+      <div class="col">
+        <div class="card m-2">
+          <img src="imagens/padaria/PassaTempo.jpg" class="card-img-top" alt="Passa Tempo" width="100" height="200">
+          <div class="card-body">
+            <p class="card-text"> </p>
+            <h4><s>DE: R$ 3,00</s></h4>
+            <h5>POR: R$ 1,50</h5>
+            <button type="button" class="btn btn-primary">ADICIONAR</button>
+          </div>
+        </div>
+       </div>   
+
+       <div class="col">
+        <div class="card m-2">
+          <img src="imagens/padaria/CaixaLacta.jpg" class="card-img-top" alt="Caixa de Bombom" width="100" height="200">
+          <div class="card-body">                
+            <p class="card-text"> </p>
+            <h4><s>DE: R$ 13,64</s></h4>
+            <h5>POR: R$ 7,00</h5>
+            <button type="button" class="btn btn-primary">ADICIONAR</button>
+          </div>
+        </div>
+       </div>   
+
+      
+       <div class="col">
+        <div class="card m-2">
+          <img src="imagens/padaria/biscoitoPolvilho.jpg" class="card-img-top" alt="Biscoito Polvilho" width="100" height="200">
+          <div class="card-body">
+            <p class="card-text"> </p>
+            <h4><s>DE: R$ 4,00</s></h4>
+            <h5>POR R$ 2,50</h5>
+            <button type="button" class="btn btn-primary">ADICIONAR</button>
+          </div>
+        </div>
+       </div>   
+
+    </div>       
+</div> 
+<!--PROMOÇÕES-->
      
       <div class="row row-cols-md-1 row-cols-md-6 g-0">
         
@@ -246,67 +295,119 @@
      <hr>
      <!--RODAPE-->
      <footer class="container-fluid text-center mt-3 mb-3">  
-      <h4 class="pt-3">PARCEIROS</h4>
+      <h4 class="pt-3 text-white">PARCEIROS</h4>
       <a id="parceiros">
-        <img src="imagens/parceiros.png" width="400" />            
+        <img src="imagens/parceiros.png" class="img-fluid d-block w-100" />            
       </a>
       
       <a id="cartoes">  
-        <h5>FORMAS DE PAGAMENTO</h5> 
+        <h5 class="text-white">FORMAS DE PAGAMENTO</h5> 
         <br>            
-        <img src="imagens/cartoes.png" alt="FORMAS DE PAGAMENTO"  width="460" >
+        <img src="imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
       </a>
      <br/> 
      <h5 id="midiasociais">MIDIAS SOCIAIS</h5>
-    <a   href="https://www.instagram.com" target="_blank">
+    <a href="https://www.instagram.com" target="_blank">
       <img class="mb-3" src="imagens/icons/instagram.svg" height="30" width="40">
     </a>
       <a  href="https://api.whatsapp.com/send?phone=5571985547159&text=Fale%20comigo%20" target="_blank">
        <img class="mb-3" src="imagens/icons/whatsapp.svg" height="30" width="40">
       </a>
         <a href="numero.txt" target="_blank">
-         <img class="mb-3" src="imagens/icons/telefone-com-fio.svg" height="30" width="40"> 
+         <img class="mb-3" src="imagens/icons/call_white_24dp.svg" height="30" width="40"> 
         </a>
         
     </footer>
      <!--RODAPE-->
 
    </div>  
-   <!-- Modal -->
-   
-   
-   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-     <div class="modal-dialog modal-dialog-centered" role="document">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="TituloModalCentralizado">Login</h5>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-             <span aria-hidden="true">&times;</span>
-           </button>
-         </div>
-         <div class="modal-body">
-         <form action="index.php" method="post">
-           <div class="form-group">
-               <label for="usuario">Login</label>
-               <input type="text" name="usuario" class="form-control" id="usuario"  placeholder="Seu CPF">
-           </div>
-           <div class="form-group">
-               <label for="senha">Senha</label>
-               <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
-           </div>
-           <button type="submit" class="btn btn-primary align-items-end">Entrar</button>
-           
-       </form>
-         </div>
-   
-         <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-           
-         </div>
-       </div>
-     </div> 
-   </div>
-   <!--Modal-->
+
+ <!-- Modal -->
+    
+    
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TituloModalCentralizado">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <form action="index.php" method="post">
+            <div class="form-group">
+                <label for="usuario">Login</label>
+                <input type="text" name="usuario" class="form-control" id="usuario"  placeholder="Seu CPF">
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
+            </div>
+            <button type="submit" class="btn btn-primary align-items-end" style="margin-top: 10px;" >Entrar</button>
+            
+        </form>
+          </div>
+    
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" href="#" data-toggle="modal" data-target="#cadastro" data-dismiss="modal" >Cadastre-se</button>
+            
+          </div>
+        </div>
+      </div> 
+    </div>
+
+    <!-- Modal Cadastro -->
+
+    <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TituloModalCentralizado">Cadastre-se</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <form action="index.php" method="post">
+            <div class="form-group">
+                <label for="usuario">CPF</label>
+                <input type="text" name="usuario" class="form-control" id="usuario"  placeholder="Seu CPF">
+            </div>
+            <div class="form-group">
+              <label for="usuario">Nome</label>
+              <input type="text" name="Nome" class="form-control" id="Nome"  placeholder="Seu Nome">
+          </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
+            </div>
+
+            <div class="form-group">
+              <label for="E-mail">E-mail</label>
+              <input type="email" name="E-mail" class="form-control" id="E-mail" placeholder="E-mail">
+          </div>
+          <div class="form-group">
+            <label for="E-mail">Cep</label>
+            <input type="Cep" name="Cep" class="form-control" id="Cep" placeholder="Cep">
+        </div>
+        <div class="form-group">
+          <label for="E-mail">Endereço</label>
+          <input type="Endereco" name="Endereço" class="form-control" id="Endereco" placeholder="Endereço">
+      </div>
+      <div class="form-group">
+        <label for="Complemento">Complemento</label>
+        <input type="Complemento" name="Complemento" class="form-control" id="Complemento" placeholder="Complemento">
+    </div>
+            <button type="submit" class="btn btn-primary align-items-end" style="margin-top: 10px;">Cadastra-se</button>
+            
+        </form>
+          </div>
+    <!-- Modal Cadastro -->
+          
+    <!--Modal-->
 
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
