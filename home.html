@@ -14,12 +14,12 @@
        <!--CABEÇALHO-->   
       <header>
 
-        <nav class="navbar navbar-expand-lg navbar-light ">
+        <nav class="navbar navbar-expand-lg navbar-dark ">
           
           <div class="container-fluid">
           <a class="navbar-brand" href="home.html">COMPRA CERTA 🛒</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="true" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
+          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="true" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon "></span>
           </button>
              <div class="collapse navbar-collapse" id="navbarScroll">
               <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
@@ -32,7 +32,7 @@
                  <li><a class="dropdown-item" href="bebidas.html">Bebidas</a></li>                
                  <li><a class="dropdown-item" href="hortfruit.html">Hortifruti</a></li>  
                  <li><a class="dropdown-item" href="congeladosFrios.html">Frios e Congelados</a></li>             
-                 <li><hr class="dropdown-divider"></li>                
+                              
                  <li><a class="dropdown-item" href="padaria.html">Padaria</a></li>
                  <li><a class="dropdown-item" href="beleza.html">Higiene e Beleza</a></li>
                  <li><a class="dropdown-item" href="limpeza.html">Limpeza</a></li>
@@ -183,7 +183,9 @@
         <a id="cartoes">  
           <h5 class="text-white">FORMAS DE PAGAMENTO</h5> 
           <br>            
-          <img src="imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
+          <div class="modal-header d-flex justify-content-center">
+            <img src="imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
+          </div>
         </a>
        <br/> 
        <h5 id="midiasociais">MIDIAS SOCIAIS</h5>
@@ -223,7 +225,7 @@
                 <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
             </div>
             <div class="d-flex justify-content-between mt-2">
-              <a href="#">Fazer Cadastro</a>
+              <a href="#" data-toggle="modal" data-target="#cadastro" data-dismiss="modal">Fazer Cadastro</a>
               <a href="#">Esqueci a senha</a>
             </div>
             <div class="d-grid gap-2">
@@ -233,10 +235,7 @@
         </form>
           </div>
     
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" href="#" data-toggle="modal" data-target="#cadastro" data-dismiss="modal" >Cadastre-se</button>
-            
-          </div>
+         
         </div>
       </div> 
     </div>
@@ -247,7 +246,7 @@
       <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="TituloModalCentralizado">Cadastre-se</h5>
+            <h5 class="modal-title" id="TituloModalCentralizado">Faça seu cadastro!</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -255,36 +254,39 @@
           <div class="modal-body">
           <form action="index.php" method="post">
             <div class="form-group">
-                <label for="usuario">CPF</label>
+                <label class="mb-3 " for="usuario">CPF</label>
                 <input type="text" name="usuario" class="form-control" id="usuario"  placeholder="Seu CPF">
             </div>
             <div class="form-group">
-              <label for="usuario">Nome</label>
+              <label class="mb-3 mt-3" for="usuario">Nome</label>
               <input type="text" name="Nome" class="form-control" id="Nome"  placeholder="Seu Nome">
           </div>
 
             <div class="form-group">
-                <label for="senha">Senha</label>
+                <label class="mb-3 mt-3" for="senha">Senha</label>
                 <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
             </div>
 
             <div class="form-group">
-              <label for="E-mail">E-mail</label>
+              <label class="mb-3 mt-3" for="E-mail">E-mail</label>
               <input type="email" name="E-mail" class="form-control" id="E-mail" placeholder="E-mail">
           </div>
           <div class="form-group">
-            <label for="E-mail">Cep</label>
+            <label class="mb-3 mt-3" for="E-mail">Cep</label>
             <input type="Cep" name="Cep" class="form-control" id="Cep" placeholder="Cep">
         </div>
         <div class="form-group">
-          <label for="E-mail">Endereço</label>
+          <label class="mb-3 mt-3" for="E-mail">Endereço</label>
           <input type="Endereco" name="Endereço" class="form-control" id="Endereco" placeholder="Endereço">
       </div>
       <div class="form-group">
-        <label for="Complemento">Complemento</label>
+        <label class="mb-3 mt-3" for="Complemento">Complemento</label>
         <input type="Complemento" name="Complemento" class="form-control" id="Complemento" placeholder="Complemento">
     </div>
-            <button type="submit" class="btn btn-primary align-items-end" style="margin-top: 10px;">Cadastra-se</button>
+    <div class="d-grid gap-2 mt-2">
+      <button type="submit" class="btn btn-primary align-items-end" style="margin-top: 10px;">Finalizar cadastro</button>
+    </div>
+            
             
         </form>
           </div>
