@@ -4,63 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="./../../css/index.css"/>
     <title>🛒COMPRA CERTA | HORTIFRUIT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
     <body class="corpo">
     <!--CABEÇALHO-->   
-<header>
-
-  <nav class="navbar navbar-expand-lg navbar-dark ">
-    
-    <div class="container-fluid">
-    <a class="navbar-brand" href="home.html">COMPRA CERTA 🛒</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="true" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-    </button>
-       <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-           <a class="nav-link active" aria-current="page" href="home.html">Inicio</a>
-        </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link active dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Departamento</a>
-           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-           <li><a class="dropdown-item" href="bebidas.html">Bebidas</a></li>                
-           <li><a class="dropdown-item" href="hortfruit.html">hortifruti</a></li>  
-           <li><a class="dropdown-item" href="congeladosFrios.html">Frios e Congelados</a></li>             
-                          
-           <li><a class="dropdown-item" href="padaria.html">Padaria</a></li>
-           <li><a class="dropdown-item" href="beleza.html">Higiene e Beleza</a></li>
-           <li><a class="dropdown-item" href="limpeza.html">Limpeza</a></li>
-           </ul>
-        </li>
-        <li class="nav-item">
-         <a class="nav-link active" href="#parceiros">Parceiros</a>
-      </li>
-        <li class="nav-item">
-           <a class="nav-link active" href="#midiasociais" >Fale Conosco</a>
-        </li>
-        </ul>
-       
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-dark me-5" type="submit">Buscar</button>
-          <a class="nav-link " href="pedidos.html">
-           <img src="imagens/icons/shopping_cart_white_24dp.svg" alt="Carinho de compras" width="30" height="24" class="d-inline-block align-top text-white">
-         </a>
-         <input style="width:20px; font-size:10px" id="qtdCar" class="ml-0 pl-0 border-0 bg-transparent text-white ml-15 float-right" value="0" readonly>
-           <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
-            <img src="imagens/icons/account_circle_white_24dp.svg" alt="login" width="30" height="25" class="d-inline-block align-top">
-         </a>
-      </form>
-     </div>
-    </div>
-  
-  </nav>
-</header>
-<!--CABEÇALHO-->
+    <?php include_once("./../includes/barraNavegacao.php"); ?>
+      <!--CABEÇALHO-->
 
     <!--PROMOÇÕES-->
   <div class="promo m-4">

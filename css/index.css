@@ -37,3 +37,113 @@ footer a#cartoes{
 .ml-15{
     margin-left: -15px;
 }
+
+/**tabelas responsivas**/
+.table-responsive {
+    overflow-x: initial; }
+    .table-responsive .dropdown-menu {
+      transform: translate3d(-73px, 35px, 0px); }
+  
+  @media (max-width: 1024px) {
+    table:not(.responsiva) {
+      display: block;
+      width: 100%;
+      overflow-x: auto; }
+      table:not(.responsiva) tbody {
+        display: inline-table;
+        width: 100%; }
+    table.responsiva.table #tbody-cnaes tr td .kt-badge {
+      position: relative; }
+    table.responsiva, table.responsiva thead, table.responsiva tbody, table.responsiva tfoot, table.responsiva tr, table.responsiva th, table.responsiva td {
+      display: block;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+      background-color: transparent !important; }
+    table.responsiva, table.responsiva thead, table.responsiva tbody, table.responsiva tfoot {
+      border: none !important;
+      background-color: transparent !important; }
+    table.responsiva th {
+      display: none; }
+    table.responsiva td.only-desktop {
+      display: none !important; }
+    table.responsiva tbody tr {
+      display: block !important;
+      width: 100% !important;
+      margin-bottom: 15px;
+      border: solid 1px #ccc !important;
+      border-radius: 6px;
+      background-color: transparent !important;
+      background-color: #FFF;
+      overflow: hidden !important;
+      border-radius: 8px !important; }
+      table.responsiva tbody tr.header {
+        display: none !important; }
+      table.responsiva tbody tr td {
+        position: relative;
+        padding: 3px 5px !important;
+        padding-left: 167px !important;
+        font-size: 14px;
+        overflow: initial;
+        background-color: #FFF !important;
+        border-left: 0 !important;
+        text-align: left !important;
+        border-radius: 8px; }
+        table.responsiva tbody tr td + td {
+          border-top: solid 1px #CCC !important; }
+        table.responsiva tbody tr td:first-child {
+          border-radius: 6px 6px 0 0; }
+        table.responsiva tbody tr td:last-child {
+          border-radius: 0 0 6px 6px;
+          overflow: hidden; }
+        table.responsiva tbody tr td:before {
+          display: block;
+          content: attr(data-titulo);
+          position: relative;
+          z-index: 10;
+          float: left;
+          width: 160px;
+          margin-left: -167px;
+          padding: 0 5px;
+          text-align: right;
+          font-size: 11px;
+          font-weight: 400;
+          text-transform: uppercase;
+          color: #FFF !important; }
+        table.responsiva tbody tr td:after {
+          display: block;
+          content: "";
+          position: absolute;
+          z-index: 9;
+          left: 0;
+          top: 0;
+          width: 160px;
+          height: 100%;
+          background-color: #23287a; }
+        table.responsiva tbody tr td > .row {
+          margin-left: -5px !important;
+          margin-right: -5px !important; }
+        table.responsiva tbody tr td .text-center,
+        table.responsiva tbody tr td .text-right {
+          text-align: left; }
+    table.responsiva tbody .btn + .btn {
+      margin-top: 10px; }
+    table.responsiva tbody .btn.btn-quero {
+      width: auto;
+      height: auto;
+      min-height: 30px;
+      padding: 7px 30px 5px 10px; }
+    table.responsiva tfoot ul.pagination > li {
+      display: inline-block;
+      margin: 0 2px 5px 2px !important;
+      line-height: 1em !important;
+      vertical-align: top; }
+      table.responsiva tfoot ul.pagination > li a,
+      table.responsiva tfoot ul.pagination > li > span {
+        display: block;
+        float: none;
+        line-height: 1em !important; }
+      table.responsiva tfoot ul.pagination > li:last-child > span {
+        padding: 0 7px; } }
+  
+  /** fim tabelas responsivas **/

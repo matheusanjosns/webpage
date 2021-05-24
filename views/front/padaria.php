@@ -4,64 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="./../../css/index.css"/>
     <title>🛒COMPRA CERTA | PADARIA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
  <body class="corpo">
     
-      <!--CABEÇALHO-->   
-<header>
-
-  <nav class="navbar navbar-expand-lg navbar-dark ">
-    
-    <div class="container-fluid">
-    <a class="navbar-brand" href="home.html">COMPRA CERTA 🛒</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="true" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-    </button>
-       <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-           <a class="nav-link active" aria-current="page" href="home.html">Inicio</a>
-        </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link active dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Departamento</a>
-           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-           <li><a class="dropdown-item" href="bebidas.html">Bebidas</a></li>                
-           <li><a class="dropdown-item" href="hortfruit.html">hortifruti</a></li>  
-           <li><a class="dropdown-item" href="congeladosFrios.html">Frios e Congelados</a></li>             
-                          
-           <li><a class="dropdown-item" href="padaria.html">Padaria</a></li>
-           <li><a class="dropdown-item" href="beleza.html">Higiene e Beleza</a></li>
-           <li><a class="dropdown-item" href="limpeza.html">Limpeza</a></li>
-           </ul>
-        </li>
-        <li class="nav-item">
-         <a class="nav-link active" href="#parceiros">Parceiros</a>
-      </li>
-        <li class="nav-item">
-           <a class="nav-link active" href="#midiasociais" >Fale Conosco</a>
-        </li>
-        </ul>
-       
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-dark me-5" type="submit">Buscar</button>
-          <a class="nav-link " href="pedidos.html">
-           <img src="imagens/icons/shopping_cart_white_24dp.svg" alt="Carinho de compras" width="30" height="24" class="d-inline-block align-top text-white">
-         </a>
-         <input style="width:20px; font-size:10px" id="qtdCar" class="ml-0 pl-0 border-0 bg-transparent text-white ml-15 float-right" value="0" readonly>
-           <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
-            <img src="imagens/icons/account_circle_white_24dp.svg" alt="login" width="30" height="25" class="d-inline-block align-top">
-         </a>
-      </form>
-     </div>
-    </div>
-  
-  </nav>
-</header>
-<!--CABEÇALHO-->
+     <!--CABEÇALHO-->   
+     <?php include_once("./../includes/barraNavegacao.php"); ?>
+      <!--CABEÇALHO-->
 
     <!--PROMOÇÕES-->
   <div class="promo m-4">
@@ -73,7 +24,7 @@
 
       <div class="col-lg-4 col-md-6">
         <div class="card m-2">
-          <img src="imagens/padaria/PassaTempo.jpg" class="card-img-top" alt="Passa Tempo" width="100" height="300">
+          <img src="./../../imagens/padaria/PassaTempo.jpg" class="card-img-top" alt="Passa Tempo" width="100" height="300">
           <div class="card-body">
             <p class="card-text"> </p>
             <h4><s>DE: R$ 3,00</s></h4>
@@ -85,7 +36,7 @@
 
        <div class="col-lg-4 col-md-6">
         <div class="card m-2">
-          <img src="imagens/padaria/CaixaLacta.jpg" class="card-img-top" alt="Caixa de Bombom" width="100" height="300">
+          <img src="./../../imagens/padaria/CaixaLacta.jpg" class="card-img-top" alt="Caixa de Bombom" width="100" height="300">
           <div class="card-body">                
             <p class="card-text"> </p>
             <h4><s>DE: R$ 13,64</s></h4>
@@ -98,7 +49,7 @@
       
        <div class="col-lg-4 col-md-12">
         <div class="card m-2">
-          <img src="imagens/padaria/biscoitoPolvilho.jpg" class="card-img-top" alt="Biscoito Polvilho" width="100" height="300">
+          <img src="./../../imagens/padaria/biscoitoPolvilho.jpg" class="card-img-top" alt="Biscoito Polvilho" width="100" height="300">
           <div class="card-body">
             <p class="card-text"> </p>
             <h4><s>DE: R$ 4,00</s></h4>
@@ -116,7 +67,7 @@
         
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/SonhoDoce.png" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/SonhoDoce.png" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-text">Sonho Doce de Leite</p>
             <p>R$ 1,90</p>
@@ -127,7 +78,7 @@
       
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/paoHambuger.jpg" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/paoHambuger.jpg" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-text">Pão de Hamburger</p>
             <p>R$ 0,50</p>
@@ -138,7 +89,7 @@
       
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/paoSal.jpg" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/paoSal.jpg" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-text">Pão de Sal</p>
             <P>R$ 0,80</P>
@@ -149,7 +100,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/paoLeite.jpg" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/paoLeite.jpg" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-text">Pão de Leite</p>
             <p>R$ 0,90</p>
@@ -160,7 +111,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/paoFatia.jpg" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/paoFatia.jpg" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-text">Pão Fatia</p>
             <p>R$ 4,00</p>
@@ -171,7 +122,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/bombaChocolate.jpg" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/bombaChocolate.jpg" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-text">Bomba de Chocolate</p>
             <p>R$ 2,50</p>
@@ -182,7 +133,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/beijinho.jpg" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/beijinho.jpg" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-text">Beijinho</p>
             <p>R$ 0,60</p>
@@ -193,7 +144,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/casadinho.jpg" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/casadinho.jpg" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-text">Casadinho</p>
             <p>R$ 0,60</p>
@@ -204,7 +155,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/Croissant.jpg" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/Croissant.jpg" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
            <p class="card-text">Croissant</p>
            <P>R$ 1,20</P>
@@ -215,7 +166,7 @@
 
        <div class="col-lg-2 col-md-4">
          <div class="card m-2">
-          <img src="imagens/padaria/brigadeiro.png" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/brigadeiro.png" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
            <p class="card-text">Brigadeiro</p>
            <p>R$ 0,50</p>
@@ -226,7 +177,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/boloBrigadeiro.jpg" class="container-fluid" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/boloBrigadeiro.jpg" class="container-fluid" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-title">Bolo de Brigadeiro</p>
             <p>R$ 50,00</p>
@@ -237,7 +188,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/donuts.jpg" class="container-fluid" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/donuts.jpg" class="container-fluid" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-title">Donuts de Chocolate</p>
             <p>R$ 3,50</p>
@@ -248,7 +199,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/boloCobertura1.png" class="container-fluid" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/boloCobertura1.png" class="container-fluid" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-title">Bolo Decorado</p>
             <p>R$ 50,00</p>
@@ -259,7 +210,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/coxinha.jpg" class="container-fluid" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/coxinha.jpg" class="container-fluid" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-title">Coxinha de Frango</p>
             <P>R$ 3,00</P>
@@ -270,7 +221,7 @@
 
        <div class="col-lg-2 col-md-4">
         <div class="card m-2">
-          <img src="imagens/padaria/pastel.jpg" class="card-img-top" alt="15" width="250" height="250">
+          <img src="./../../imagens/padaria/pastel.jpg" class="card-img-top" alt="15" width="250" height="250">
           <div class="card-body">
             <p class="card-text">Pastel de Carne</p>
             <p>R$ 2,50</p>
@@ -281,7 +232,7 @@
      
         <div class="col-lg-2 col-md-4">
           <div class="card m-2">
-            <img src="imagens/padaria/paodeQueijo.png" class="card-img-top" alt="Pão de Queijo" width="250" height="250">
+            <img src="./../../imagens/padaria/paodeQueijo.png" class="card-img-top" alt="Pão de Queijo" width="250" height="250">
             <div class="card-body">
               <p class="card-text">Pão de Queijo</p>
               <p>R$ 5,00</p>
@@ -297,26 +248,26 @@
      <footer class="container-fluid text-center mt-3 mb-3">  
       <h4 class="pt-3 text-white">PARCEIROS</h4>
       <a id="parceiros">
-        <img src="imagens/parceiros.png"  class="img-fluid d-block w-100" />            
+        <img src="./../../imagens/parceiros.png"  class="img-fluid d-block w-100" />            
       </a>
       
       <a id="cartoes">  
         <h5 class="text-white">FORMAS DE PAGAMENTO</h5> 
         <br>            
         <div class="modal-header d-flex justify-content-center">
-          <img src="imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
+          <img src="./../../imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
         </div>
       </a>
      <br/> 
      <h5 id="midiasociais">MIDIAS SOCIAIS</h5>
     <a href="https://www.instagram.com" target="_blank">
-      <img class="mb-3" src="imagens/icons/instagram.svg" height="30" width="40">
+      <img class="mb-3" src="./../../imagens/icons/instagram.svg" height="30" width="40">
     </a>
       <a  href="https://api.whatsapp.com/send?phone=5571985547159&text=Fale%20comigo%20" target="_blank">
-       <img class="mb-3" src="imagens/icons/whatsapp.svg" height="30" width="40">
+       <img class="mb-3" src="./../../imagens/icons/whatsapp.svg" height="30" width="40">
       </a>
         <a href="numero.txt" target="_blank">
-         <img class="mb-3" src="imagens/icons/call_white_24dp.svg" height="30" width="40"> 
+         <img class="mb-3" src="./../../imagens/icons/call_white_24dp.svg" height="30" width="40"> 
         </a>
         
     </footer>
