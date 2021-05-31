@@ -30,69 +30,69 @@
                   </thead>
                   <tbody>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>
+                        <td data-titulo="Item" scope="row">1</td>
+                        <td data-titulo="Produto">
                           <div class="row">
                               <img src="./../../imagens/bedidas/whiskyRoyal-salute.jpg" class="col-1 img-fluid" alt="whisky Royal Salute" width="20px" height="40px">
                               <p class="col-9">Whisky Royal Salute 21 anos - 700ml</p>
                           </div>
                         </td>
-                        <td><button onclick="decrementaValor(0); return false;" class="btn-warning">-</button><input style="width:20px; font-size:14px" id="resultado" class="m-2 border-0 bg-white text-dark text-center float-right" value="1" readonly><button onclick="incrementaValor(99);return false;" class="btn-success">+</button></td>
-                        <td><button type="button" class="btn btn-danger">Remover</button></td>
+                        <td data-titulo="Quantidade"><button onclick="decrementaValor(0); return false;" class="btn-warning">-</button><input style="width:20px; font-size:14px" id="resultado" class="m-2 border-0 bg-white text-dark text-center float-right" value="1" readonly><button onclick="incrementaValor(99);return false;" class="btn-success">+</button></td>
+                        <td ><button type="button" class="btn btn-danger">Remover</button></td>
                     </tr>
                     <tr>
-                        <th scope="row">2</th>
-                        <td>
+                        <td data-titulo="Item" scope="row">2</td>
+                        <td data-titulo="Produto">
                           <div class="row">
                               <img src="./../../imagens/hortifruit/banana.jpg" class="col-1 img-fluid" alt="whisky Royal Salute" width="20px" height="40px">
                               <p class="col-10">Banana</p>
                           </div>
                         </td>
-                        <td><button class="btn-warning">-</button><input style="width:20px; font-size:14px" id="qtdCar" class="m-2 border-0 bg-white text-dark text-center float-right" value="2" readonly><button class="btn-success">+</button></td>
+                        <td data-titulo="Quantidade"><button class="btn-warning">-</button><input style="width:20px; font-size:14px" id="qtdCar" class="m-2 border-0 bg-white text-dark text-center float-right" value="2" readonly><button class="btn-success">+</button></td>
                         <td><button type="button" class="btn btn-danger">Remover</button></td>
                     </tr>
                     <tr>
-                        <th scope="row">3</th>
-                        <td>
+                        <td data-titulo="Item" scope="row">3</td>
+                        <td data-titulo="Produto">
                           <div class="row">
                               <img src="./../../imagens/Beleza/colgate12.jpg" class="col-1 img-fluid" alt="whisky Royal Salute" width="20px" height="40px">
                               <p class="col-9">Colgate Total 12 Advanced Fresh 90g</p>
                           </div>
                         </td>
-                        <td><button class="btn-warning">-</button><input style="width:20px; font-size:14px" id="qtdCar" class="m-2 border-0 bg-white text-dark text-center float-right" value="7" readonly><button class="btn-success">+</button></td>
+                        <td data-titulo="Quantidade"><button class="btn-warning">-</button><input style="width:20px; font-size:14px" id="qtdCar" class="m-2 border-0 bg-white text-dark text-center float-right" value="7" readonly><button class="btn-success">+</button></td>
                         <td><button type="button" class="btn btn-danger">Remover</button></td>
                     </tr>
                     <tr>
-                        <th scope="row">3</th>
-                        <td>
+                        <td data-titulo="Item" scope="row">3</td>
+                        <td data-titulo="Produto">
                           <div class="row">
                               <img src="./../../imagens/friosCongelados/peitoPeru.jpg" class="col-1 img-fluid" alt="whisky Royal Salute" width="20px" height="40px">
                               <p class="col-9">Peito de Peru</p>
                           </div>
                         </td>
-                        <td><button class="btn-warning">-</button><input style="width:20px; font-size:14px" id="qtdCar" class="m-2 border-0 bg-white text-dark text-center float-right" value="2" readonly><button class="btn-success">+</button></td>
+                        <td data-titulo="Quantidade"><button class="btn-warning">-</button><input style="width:20px; font-size:14px" id="qtdCar" class="m-2 border-0 bg-white text-dark text-center float-right" value="2" readonly><button class="btn-success">+</button></td>
                         <td><button type="button" class="btn btn-danger">Remover</button></td>
                     </tr>
                     <tr>
-                        <th scope="row">3</th>
-                        <td>
+                        <td data-titulo="Item" scope="row">3</td>
+                        <td data-titulo="Produto">
                           <div class="row">
                               <img src="./../../imagens/limpeza/AmacianteDowny.jpg" class="col-1 img-fluid" alt="whisky Royal Salute" width="20px" height="40px">
                               <p class="col-9">Amaciante Downy</p>
                           </div>
                         </td>
-                        <td><button class="btn-warning">-</button><input style="width:20px; font-size:14px" id="qtdCar" class="m-2 border-0 bg-white text-dark text-center float-right" value="3" readonly><button class="btn-success">+</button></td>
+                        <td data-titulo="Quantidade"><button class="btn-warning">-</button><input style="width:20px; font-size:14px" id="qtdCar" class="m-2 border-0 bg-white text-dark text-center float-right" value="3" readonly><button class="btn-success">+</button></td>
                         <td><button type="button" class="btn btn-danger">Remover</button></td>
                     </tr>
                     <tr>
-                        <th scope="row">3</th>
-                        <td>
+                        <td data-titulo="Item" scope="row">3</td>
+                        <td data-titulo="Produto">
                           <div class="row">
                               <img src="./../../imagens/padaria/boloCobertura1.png" class="col-1 img-fluid" alt="whisky Royal Salute" width="20px" height="40px">
                               <p class="col-9">Bolo Decorado</p>
                           </div>
                         </td>
-                        <td><button class="btn-warning">-</button><input style="width:20px; font-size:14px" id="qtdCar" class="m-2 border-0 bg-white text-dark text-center float-right" value="2" readonly><button class="btn-success">+</button></td>
+                        <td data-titulo="Quantidade"><button class="btn-warning">-</button><input style="width:20px; font-size:14px" id="qtdCar" class="m-2 border-0 bg-white text-dark text-center float-right" value="2" readonly><button class="btn-success">+</button></td>
                         <td><button type="button" class="btn btn-danger">Remover</button></td>
                     </tr>
                   </tbody>
@@ -120,30 +120,7 @@
       </div>
       <hr>
       <!--RODAPE-->
-      <footer class="container-fluid text-center mt-3 mb-3">
-         <h4 class="pt-3 text-white">PARCEIROS</h4>
-         <a id="parceiros">
-         <img src="./../../imagens/parceiros.png" class="img-fluid d-block w-100" />            
-         </a>
-         <a id="cartoes">
-            <h5 class="text-white">FORMAS DE PAGAMENTO</h5>
-            <br>            
-            <div class="modal-header d-flex justify-content-center">
-               <img src="./../../imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
-            </div>
-         </a>
-         <br/> 
-         <h5 id="midiasociais">MIDIAS SOCIAIS</h5>
-         <a href="https://www.instagram.com" target="_blank">
-         <img class="mb-3" src="./../../imagens/icons/instagram.svg" height="30" width="40">
-         </a>
-         <a  href="https://api.whatsapp.com/send?phone=5571985547159&text=Fale%20comigo%20" target="_blank">
-         <img class="mb-3" src="./../../imagens/icons/whatsapp.svg" height="30" width="40">
-         </a>
-         <a href="numero.txt" target="_blank">
-         <img class="mb-3" src="./../../imagens/icons/call_white_24dp.svg" height="30" width="40"> 
-         </a>
-      </footer>
+      <?php include_once("./../includes/rodape.php"); ?>
       <!--RODAPE-->
       </div>  
       <!-- Modal -->
