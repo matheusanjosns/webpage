@@ -4,64 +4,17 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="css/index.css"/>
+      <link rel="stylesheet" href="./../../css/index.css"/>
       <title>🛒COMPRA CERTA | BEBIDAS</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
    <body class="corpo">
      
-    <!--CABEÇALHO-->   
-<header>
+     
+<!--CABEÇALHO-->   
+<?php include_once("./../includes/barraNavegacao.php"); ?>
+      <!--CABEÇALHO-->
 
-  <nav class="navbar navbar-expand-lg navbar-dark ">
-    
-    <div class="container-fluid">
-    <a class="navbar-brand" href="home.html">COMPRA CERTA 🛒</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="true" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-    </button>
-       <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-           <a class="nav-link active" aria-current="page" href="home.html">Inicio</a>
-        </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link active dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Departamento</a>
-           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-           <li><a class="dropdown-item" href="bebidas.html">Bebidas</a></li>                
-           <li><a class="dropdown-item" href="hortfruit.html">hortifruti</a></li>  
-           <li><a class="dropdown-item" href="congeladosFrios.html">Frios e Congelados</a></li>             
-                          
-           <li><a class="dropdown-item" href="padaria.html">Padaria</a></li>
-           <li><a class="dropdown-item" href="beleza.html">Higiene e Beleza</a></li>
-           <li><a class="dropdown-item" href="limpeza.html">Limpeza</a></li>
-           </ul>
-        </li>
-        <li class="nav-item">
-         <a class="nav-link active" href="#parceiros">Parceiros</a>
-      </li>
-        <li class="nav-item">
-           <a class="nav-link active" href="#midiasociais" >Fale Conosco</a>
-        </li>
-        </ul>
-       
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-dark me-5" type="submit">Buscar</button>
-          <a class="nav-link " href="pedidos.html">
-           <img src="imagens/icons/shopping_cart_white_24dp.svg" alt="Carinho de compras" width="30" height="24" class="d-inline-block align-top text-white">
-         </a>
-         <input style="width:20px; font-size:10px" id="qtdCar" class="ml-0 pl-0 border-0 bg-transparent text-white ml-15 float-right" value="0" readonly>
-           <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
-            <img src="imagens/icons/account_circle_white_24dp.svg" alt="login" width="30" height="25" class="d-inline-block align-top">
-         </a>
-      </form>
-     </div>
-    </div>
-  
-  </nav>
-</header>
-<!--CABEÇALHO-->
       <!--PROMOÇÕES-->
       <div class="promo m-4">
         <h1>
@@ -72,7 +25,7 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="card m-2">
-              <img src="imagens/bedidas/whiskyRoyal-salute.jpg" class="card-img-top" alt="whisky Royal Salute" width="100" height="300">
+              <img src="./../../imagens/bedidas/whiskyRoyal-salute.jpg" class="card-img-top" alt="whisky Royal Salute" width="100" height="300">
               <div class="card-body">
                 <p class="card-text">Whisky Royal Salute 21 anos - 700ml</p>
                 <h4><s>DE: R$ 1.147,00</s></h4>
@@ -84,7 +37,7 @@
 
            <div class="col-lg-4 col-md-6">
             <div class="card m-2">
-              <img src="imagens/bedidas/ginTanqueray.jpg" class="card-img-top" alt="Gin Tanqueray" width="100" height="300">
+              <img src="./../../imagens/bedidas/ginTanqueray.jpg" class="card-img-top" alt="Gin Tanqueray" width="100" height="300">
               <div class="card-body">                
                 <p class="card-text"> Gin Tanqueray</p>
                 <h4><s>DE: R$ 149,90</s></h4>
@@ -97,7 +50,7 @@
           
            <div class="col-lg-4 col-md-12">
             <div class="card m-2">
-              <img src="imagens/bedidas/relBull.jpg" class="card-img-top" alt="Red Bull" width="100" height="300">
+              <img src="./../../imagens/bedidas/relBull.jpg" class="card-img-top" alt="Red Bull" width="100" height="300">
               <div class="card-body">
                 <p class="card-text">Red Bull 250ML</p>
                 <h4><s>DE: R$ 10,00</s></h4>
@@ -115,7 +68,7 @@
 
         <div class="col-lg-2 col-md-4">
           <div class="card ">
-            <img src="imagens/bedidas/colaCola.jpg" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="250" height="250px">
+            <img src="./../../imagens/bedidas/colaCola.jpg" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="250" height="250px">
             <div class="card-body">
               <p class="card-text">Refrigerante Coca Cola 2L</p>
               <p>R$ 5,90</p>
@@ -126,7 +79,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card ">
-            <img src="imagens/bedidas/guaraJesus.jpg" class="card-img-top" alt="Refrigerante Guarana Jesus - 350ML" width="250" height="250">
+            <img src="./../../imagens/bedidas/guaraJesus.jpg" class="card-img-top" alt="Refrigerante Guarana Jesus - 350ML" width="250" height="250">
             <div class="card-body">
               <p class="card-text">Refrigerante Guarana Jesus 350ML</p>
               <p>R$ 3,00</p>
@@ -137,7 +90,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card ">
-            <img src="imagens/bedidas/CocaLata1.png" class="card-img-top" alt="Refrigerante Cola Cola - 350ML" width="250" height="250">
+            <img src="./../../imagens/bedidas/CocaLata1.png" class="card-img-top" alt="Refrigerante Cola Cola - 350ML" width="250" height="250">
             <div class="card-body">
               <p class="card-text">Refrigerante Cola Cola - 350ML</p>
               <P>R$ 2,80</P>
@@ -148,7 +101,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-1">
-            <img src="imagens/bedidas/coca-fanta.jpg" class="card-img-top" alt="Refrigerante Guarana Jesus - 350ML" width="250" height="250">
+            <img src="./../../imagens/bedidas/coca-fanta.jpg" class="card-img-top" alt="Refrigerante Guarana Jesus - 350ML" width="250" height="250">
             <div class="card-body">
               <p class="card-text">Refrigerante Coca e Fanta  2L</p>
               <p>R$ 9,00</p>
@@ -160,7 +113,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-1">
-          <img src="imagens/bedidas/guranaAntartica.jpeg" class="card-img-top" alt="Refrigerante Antartica 2L" width="250" height="250">
+          <img src="./../../imagens/bedidas/guranaAntartica.jpeg" class="card-img-top" alt="Refrigerante Antartica 2L" width="250" height="250">
             <div class="card-body">
               <p class="card-text">Refrigerante Antartica 2L</p>
               <p>R$ 6,90</p>
@@ -172,7 +125,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-1">
-            <img src="imagens/bedidas/cervejaHeineken.jpg" class="card-img-top" alt="Cerveja Heineken" width="250" height="250">
+            <img src="./../../imagens/bedidas/cervejaHeineken.jpg" class="card-img-top" alt="Cerveja Heineken" width="250" height="250">
             <div class="card-body">
               <p class="card-text">Cerveja Heineken</p>
               <p>R$ 7,00</p>
@@ -183,7 +136,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-1">
-            <img src="imagens/bedidas/Budweiser.png" class="card-img-top" alt="Cerveja Budweiser" width="250" height="250">
+            <img src="./../../imagens/bedidas/Budweiser.png" class="card-img-top" alt="Cerveja Budweiser" width="250" height="250">
             <div class="card-body">
               <p class="card-text">Cerveja Budweiser</p>
               <p>R$ 7,00</p>
@@ -194,7 +147,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-1">
-            <img src="imagens/bedidas/cerveja-stella-artois.jpg" class="card-img-top" alt="Cerveja Stella Artois" width="250" height="250">
+            <img src="./../../imagens/bedidas/cerveja-stella-artois.jpg" class="card-img-top" alt="Cerveja Stella Artois" width="250" height="250">
             <div class="card-body">
               <p class="card-text">Cerveja Stella Artois</p>
               <p>R$ 7,00</p>
@@ -205,7 +158,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-1">
-            <img src="imagens/bedidas/skolBeats.jpg" class="card-img-top" alt="Cerveja Skol Beats" width="250" height="250">
+            <img src="./../../imagens/bedidas/skolBeats.jpg" class="card-img-top" alt="Cerveja Skol Beats" width="250" height="250">
             <div class="card-body">
               <p class="card-text">Cerveja Skol Beats</p>
               <p>R$ 6,00</p>
@@ -216,7 +169,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-1">
-            <img src="imagens/bedidas/redLabel.jpg" class="card-img-top" alt="Whisky Red Label" width="250" height="250">
+            <img src="./../../imagens/bedidas/redLabel.jpg" class="card-img-top" alt="Whisky Red Label" width="250" height="250">
             <div class="card-body">
              <p class="card-text">Whisky Red Label</p>
              <P>R$ 100,00</P>
@@ -227,7 +180,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card ">
-            <img src="imagens/bedidas/blackLabel.jpg" class="card-img-top" alt="Whisky Black Label" width="250" height="250">
+            <img src="./../../imagens/bedidas/blackLabel.jpg" class="card-img-top" alt="Whisky Black Label" width="250" height="250">
             <div class="card-body">
              <p class="card-text">Whisky Black Label</p>
              <p>R$ 170,00</p>
@@ -238,7 +191,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-1">
-            <img src="imagens/bedidas/buchanan's.png" class="container-fluid" alt="whisky Buchanan's" width="250" height="250">
+            <img src="./../../imagens/bedidas/buchanan's.png" class="container-fluid" alt="whisky Buchanan's" width="250" height="250">
             <div class="card-body">
               <p class="card-title">Whisky Buchanan's</p>
               <p>R$ 200,00</p>
@@ -249,7 +202,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-2">
-            <img src="imagens/bedidas/whiskyPassport.jpg" class="container-fluid" alt="whisky Passport" width="250" height="250">
+            <img src="./../../imagens/bedidas/whiskyPassport.jpg" class="container-fluid" alt="whisky Passport" width="250" height="250">
             <div class="card-body">
               <p class="card-title">Whisky Passport</p>
               <p>R$ 75,00</p>
@@ -260,7 +213,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-2">
-            <img src="imagens/bedidas/wiskCavalo.jpg" class="container-fluid" alt="wisk Cavalo Branco" width="250" height="250">
+            <img src="./../../imagens/bedidas/wiskCavalo.jpg" class="container-fluid" alt="wisk Cavalo Branco" width="250" height="250">
             <div class="card-body">
               <p class="card-title">Whisky Cavalo Branco</p>
               <p>R$ 120,00</p>
@@ -271,7 +224,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-2">
-            <img src="imagens/bedidas/smirnoff.jpg" class="container-fluid" alt="Vodka Smirnoff" width="250" height="250">
+            <img src="./../../imagens/bedidas/smirnoff.jpg" class="container-fluid" alt="Vodka Smirnoff" width="250" height="250">
             <div class="card-body">
               <p class="card-title">Vodka Smirnoff</p>
               <P>R$ 30,00</P>
@@ -282,7 +235,7 @@
 
          <div class="col-lg-2 col-md-4">
           <div class="card m-2">
-            <img src="imagens/bedidas/absolute.jpg" class="card-img-top" alt="Vodka Absolte" width="250" height="250">
+            <img src="./../../imagens/bedidas/absolute.jpg" class="card-img-top" alt="Vodka Absolte" width="250" height="250">
             <div class="card-body">
               <p class="card-text">Vodka Absolute</p>
               <p>R$ 25,00</p>
@@ -299,26 +252,26 @@
       <footer class="container-fluid text-center mt-3 mb-3">  
         <h4 class="pt-3 text-white">PARCEIROS</h4>
         <a id="parceiros">
-          <img src="imagens/parceiros.png" class="img-fluid d-block w-100" />            
+          <img src="./../../imagens/parceiros.png" class="img-fluid d-block w-100" />            
         </a>
         
         <a id="cartoes">  
           <h5 class="text-white">FORMAS DE PAGAMENTO</h5> 
           <br>            
           <div class="modal-header d-flex justify-content-center">
-            <img src="imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
+            <img src="./../../imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
           </div>
         </a>
        <br/> 
        <h5 id="midiasociais">MIDIAS SOCIAIS</h5>
       <a href="https://www.instagram.com" target="_blank">
-        <img class="mb-3" src="imagens/icons/instagram.svg" height="30" width="40">
+        <img class="mb-3" src="./../../imagens/icons/instagram.svg" height="30" width="40">
       </a>
         <a  href="https://api.whatsapp.com/send?phone=5571985547159&text=Fale%20comigo%20" target="_blank">
-         <img class="mb-3" src="imagens/icons/whatsapp.svg" height="30" width="40">
+         <img class="mb-3" src="./../../imagens/icons/whatsapp.svg" height="30" width="40">
         </a>
           <a href="numero.txt" target="_blank">
-           <img class="mb-3" src="imagens/icons/call_white_24dp.svg" height="30" width="40"> 
+           <img class="mb-3" src="./../../imagens/icons/call_white_24dp.svg" height="30" width="40"> 
           </a>
           
       </footer>

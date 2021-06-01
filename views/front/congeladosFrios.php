@@ -4,69 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="./../../css/index.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <title>🛒COMPRA CERTA | HIGIENE</title>
+    <title>🛒COMPRA CERTA | FRIOS</title>
 </head>
 
 <body class="corpo">
 
 
 <!--CABEÇALHO-->   
-<header>
+<?php include_once("./../includes/barraNavegacao.php"); ?>
+      <!--CABEÇALHO-->
 
-  <nav class="navbar navbar-expand-lg navbar-dark ">
-    
-    <div class="container-fluid">
-    <a class="navbar-brand" href="home.html">COMPRA CERTA 🛒</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="true" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-    </button>
-       <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-           <a class="nav-link active" aria-current="page" href="home.html">Inicio</a>
-        </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link active dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Departamento</a>
-           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-           <li><a class="dropdown-item" href="bebidas.html">Bebidas</a></li>                
-           <li><a class="dropdown-item" href="hortfruit.html">hortifruti</a></li>  
-           <li><a class="dropdown-item" href="congeladosFrios.html">Frios e Congelados</a></li>             
-                          
-           <li><a class="dropdown-item" href="padaria.html">Padaria</a></li>
-           <li><a class="dropdown-item" href="beleza.html">Higiene e Beleza</a></li>
-           <li><a class="dropdown-item" href="limpeza.html">Limpeza</a></li>
-           </ul>
-        </li>
-        <li class="nav-item">
-         <a class="nav-link active" href="#parceiros">Parceiros</a>
-      </li>
-        <li class="nav-item">
-           <a class="nav-link active" href="#midiasociais" >Fale Conosco</a>
-        </li>
-        </ul>
-       
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-dark me-5" type="submit">Buscar</button>
-          <a class="nav-link " href="pedidos.html">
-           <img src="imagens/icons/shopping_cart_white_24dp.svg" alt="Carinho de compras" width="30" height="24" class="d-inline-block align-top text-white">
-         </a>
-         <input style="width:20px; font-size:10px" id="qtdCar" class="ml-0 pl-0 border-0 bg-transparent text-white ml-15 float-right" value="0" readonly>
-           <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
-            <img src="imagens/icons/account_circle_white_24dp.svg" alt="login" width="30" height="25" class="d-inline-block align-top">
-         </a>
-      </form>
-     </div>
-    </div>
-  
-  </nav>
-</header>
-<!--CABEÇALHO-->
 
   <!--PROMOÇÕES-->
-  <div class="promo m-4">
+  <div class="promo ">
     <h1>
       PROMOÇÕES
     </h1>
@@ -75,11 +27,11 @@
 
       <div class="col-lg-4 col-md-6">
         <div class="card m-2">
-          <img src="imagens/limpeza/comfort.png" class="card-img-top" alt="Amaciante Comfort" width="100" height="200">
+          <img src="./../../imagens/friosCongelados/batataFrita.jpg" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="100" height="300">
           <div class="card-body">
-            <p class="card-text">Amaciante Comfort</p>
-            <h4><s>DE: R$ 15,00</s></h4>
-            <h5>POR: R$ 10,00</h5>
+            <p class="card-text"> </p>
+            <h4><s>DE: R$ 19,90</s></h4>
+            <h5>POR: R$ 12,90</h5>
             <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
           </div>
         </div>
@@ -87,10 +39,10 @@
 
        <div class="col-lg-4 col-md-6">
         <div class="card m-2">
-          <img src="imagens/limpeza/AmacianteDowny.jpg" class="card-img-top" alt="Amaciante Downy" width="100" height="200">
+          <img src="./../../imagens/friosCongelados/pizzaCalabresa.jpg" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="100" height="300">
           <div class="card-body">                
-            <p class="card-text">Amaciante Downy </p>
-            <h4><s>DE: R$ 26,35</s></h4>
+            <p class="card-text"> </p>
+            <h4><s>DE: R$ 20,00</s></h4>
             <h5>POR: R$ 15,00</h5>
             <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
           </div>
@@ -100,11 +52,11 @@
       
        <div class="col-lg-4 col-md-12">
         <div class="card m-2">
-          <img src="imagens/limpeza/rodoPia.jpg" class="card-img-top" alt="Rodo Pia" width="100" height="200">
+          <img src="./../../imagens/friosCongelados/queijoCuia.png" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="100" height="300">
           <div class="card-body">
-            <p class="card-text">Rodo Pia </p>
-            <h4><s>DE: R$ 5,49</s></h4>
-            <h5>POR R$ 3,00</h5>
+            <p class="card-text"> </p>
+            <h4><s>DE: R$ 40,00</s></h4>
+            <h5>POR R$ 25,00</h5>
             <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
           </div>
         </div>
@@ -114,103 +66,93 @@
 </div> 
 <!--PROMOÇÕES-->
 
-  
-  <div class="row m-2">
+  <div class="row">
         
     <div class="col-lg-2 col-md-4">
      <div class="card m-2">
-       <img src="imagens/limpeza/lisoform.jpg" class="card-img-top" alt="Lisoform" width="250" height="250">
+       <img src="./../../imagens/friosCongelados/fileDepeito.jpg" class="card-img-top" alt="FILE DE PEITO" width="250" height="250px">
        <div class="card-body">
-         <p class="card-text">Lisoform 1L</p>
-         <p>R$ 10,00</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>         
-     </div>       
-    </div>
-   
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/qboa.jpg" class="card-img-top" alt="Água Sanitaria Qboa" width="250" height="250">
-       <div class="card-body">
-         <p class="card-text">Água Sanitaria Qboa 1UND</p>
-         <p>R$ 3,00</p>
+         <p class="card-text">FILE DE PEITO</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
    
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/sabaoLiquido.jpg" class="card-img-top" alt="Sabão Liquido Ype" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/lasanha.jpg" class="card-img-top" alt="LASANHA BOLONHESA" width="250" height="250px">
        <div class="card-body">
-         <p class="card-text">Sabão Liquido Ype 1UND</p>
-         <P>R$ 2,20</P>
+         <p class="card-text">LASANHA BOLONHESA</p>
+         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
+       </div>
+     </div>
+    </div>
+   
+    <div class="col-lg-2 col-md-4">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/margarinaQualy.jpg" class="card-img-top" alt="Margarina Qualy" width="250" height="250px">
+       <div class="card-body">
+         <p class="card-text">Margarina Qualy</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/shampoPet.jpg" class="card-img-top" alt="Shampo Pet" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/nuggets.jpg" class="card-img-top" alt="Nuggets" width="250" height="250px">
        <div class="card-body">
-         <p class="card-text">Shampo Pet 1L</p>
-         <p>R$ 20,00</p>
+         <p class="card-text">Nuggets</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/veja.jpg" class="card-img-top" alt="Desenfetante Veja" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/paoDequeijo.jpg" class="card-img-top" alt="Pão De Queijo" width="250" height="250px">
        <div class="card-body">
-         <p class="card-text">Desenfetante Veja 1UND</p>
-         <p>R$ 4,50</p>
+         <p class="card-text">Pão De Queijo</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/sabaoEmPo.jpg" class="card-img-top" alt="Sabão em Po OMO" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/peitoPeru.jpg" class="card-img-top" alt="Peito Peru" width="250" height="250px">
        <div class="card-body">
-         <p class="card-text">Sabão em Po OMO 1PC</p>
-         <p>R$ 20,00</p>
+         <p class="card-text">Peito Peru</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/mop.jpg" class="card-img-top" alt="Limpador MOP" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/queijoMussa.jpg" class="card-img-top" alt="Queijo Mussarela" width="250" height="250px">
        <div class="card-body">
-         <p class="card-text">Limpador MOP 1UND</p>
-         <p>R$ 69,00</p>
+         <p class="card-text">Queijo Mussarela</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/pano-de-limpeza.jpg" class="card-img-top" alt="Pano para Limpeza" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/presunto.jpg" class="card-img-top" alt="Presunto" width="250" height="250px">
        <div class="card-body">
-         <p class="card-text">Pano para Limpeza 3UND</p>
-         <p>R$ 12,60</p>
+         <p class="card-text">Presunto</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/alcol 70.jpg" class="card-img-top" alt="Álcool 70%" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/sobrecoxa.jpg" class="card-img-top" alt="Sobre Coxa" width="250" height="250px">
        <div class="card-body">
-        <p class="card-text">Álcool 70% 1L</p>
-        <P>R$ 5,90</P>
+        <p class="card-text">Sobre Coxa</p>
         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
@@ -218,114 +160,107 @@
 
     <div class="col-lg-2 col-md-4">
       <div class="card m-2">
-       <img src="imagens/limpeza/germicida.jpg" class="card-img-top" alt="Germicida Hidrosteril Plus" width="250" height="250">
+       <img src="./../../imagens/friosCongelados/tortaEspinafre.jpg" class="card-img-top" alt="Torta de espinafre" width="250" height="250px">
        <div class="card-body">
-        <p class="card-text">Germicida Hidrosteril Plus 1L</p>
-        <p>R$ 15,00</p>
+        <p class="card-text">Torta de espinafre</p>
         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/amacianteConfort.jpg" class="container-fluid" alt="Amaciante Confort" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/toscana.jpg" class="container-fluid" alt="Toscana" width="250" height="250px">
        <div class="card-body">
-         <p class="card-title">Amaciante Confort 1UND</p>
-         <p>R$ 15,00</p>
+         <p class="card-title">Toscana</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/vanish.jpg" class="container-fluid" alt="alvejante Vanish" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/burguerVegetais.jpg" class="container-fluid" alt="Hamburguer de Vegetais" width="250" height="250px">
        <div class="card-body">
-         <p class="card-title">Alvejante Vanish 1UND</p>
-         <p>R$ 18,18</p>
+         <p class="card-title">Hamburguer de Vegetais</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/sacoParaLixoPreto.jpg" class="container-fluid" alt="Saco para lixo preto" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/linguicaCalabresa.jpg" class="container-fluid" alt="Linguica Calabresa" width="250" height="250px">
        <div class="card-body">
-         <p class="card-title">Saco para lixo preto 10UND</p>
-         <p>R$ 10,00</p>
+         <p class="card-title">Linguica Calabresa</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/luvaLonga.jpg" class="container-fluid" alt="Luva Longa " width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/bisteca.jpg" class="container-fluid" alt="Bisteca" width="250" height="250px">
        <div class="card-body">
-         <p class="card-title">Luva Longa 4UND</p>
-         <P>R$ 5,00</P>
+         <p class="card-title">Bisteca</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="imagens/limpeza/balde.jpg" class="card-img-top" alt="Balde" width="250" height="250">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/filezinho.jpg" class="card-img-top" alt="Filezinho de Frango" width="250" height="250px">
        <div class="card-body">
-         <p class="card-text">Balde 1UND</p>
-         <p>R$ 5,50</p>
+         <p class="card-text">Filezinho de Frango</p>
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
-     </div>
-  
-     <div class="col-lg-2 col-md-4">
-       <div class="card m-2">
-         <img src="imagens/limpeza/aromatizadorEletrico.jpg" class="card-img-top" alt="Aromatizador Eletrico" width="250" height="250">
-         <div class="card-body">
-           <p class="card-text">Aromatizador Eletrico 1UND</p>
-           <p>R$ 25,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-       </div>
-   
-   </div>
+    </div>
 
-   <hr>
+    <div class="col-lg-2 col-md-4">
+      <div class="card m-2">
+       <img src="./../../imagens/friosCongelados/presuntoFatia.jpg" class="card-img-top" alt="Presento Fatiado" width="250" height="250px">
+       <div class="card-body">
+         <p class="card-text">Presento Fatiado</p>
+         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
+       </div>
+     </div>
+    </div>
+
+  </div>
+
+
+
+  <hr>
       <!--RODAPE-->
       <footer class="container-fluid text-center mt-3 mb-3">  
         <h4 class="pt-3 text-white">PARCEIROS</h4>
         <a id="parceiros">
-          <img src="imagens/parceiros.png" class="img-fluid d-block w-100" />            
+          <img src="./../../imagens/parceiros.png" class="img-fluid d-block w-100" />            
         </a>
         
         <a id="cartoes">  
           <h5 class="text-white">FORMAS DE PAGAMENTO</h5> 
           <br>            
           <div class="modal-header d-flex justify-content-center">
-            <img src="imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
+            <img src="./../../imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
           </div>
         </a>
        <br/> 
        <h5 id="midiasociais">MIDIAS SOCIAIS</h5>
       <a href="https://www.instagram.com" target="_blank">
-        <img class="mb-3" src="imagens/icons/instagram.svg" height="30" width="40">
+        <img class="mb-3" src="./../../imagens/icons/instagram.svg" height="30" width="40">
       </a>
         <a  href="https://api.whatsapp.com/send?phone=5571985547159&text=Fale%20comigo%20" target="_blank">
-         <img class="mb-3" src="imagens/icons/whatsapp.svg" height="30" width="40">
+         <img class="mb-3" src="./../../imagens/icons/whatsapp.svg" height="30" width="40">
         </a>
           <a href="numero.txt" target="_blank">
-           <img class="mb-3" src="imagens/icons/call_white_24dp.svg" height="30" width="40"> 
+           <img class="mb-3" src="./../../imagens/icons/call_white_24dp.svg" height="30" width="40"> 
           </a>
           
       </footer>
       <!--RODAPE-->
- 
-
  <!-- Modal -->
     
     
@@ -418,8 +353,8 @@
 <!--Modal-->
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>

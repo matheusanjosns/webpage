@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="./../../css/index.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <title>🛒COMPRA CERTA | HOME</title>
 </head>
@@ -12,56 +12,7 @@
 <body class="corpo">
 
        <!--CABEÇALHO-->   
-      <header>
-
-        <nav class="navbar navbar-expand-lg navbar-dark ">
-          
-          <div class="container-fluid">
-          <a class="navbar-brand" href="home.html">COMPRA CERTA 🛒</a>
-          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="true" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon "></span>
-          </button>
-             <div class="collapse navbar-collapse" id="navbarScroll">
-              <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-              <li class="nav-item">
-                 <a class="nav-link active" aria-current="page" href="home.html">Inicio</a>
-              </li>
-              <li class="nav-item dropdown">
-                 <a class="nav-link active dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Departamentos</a>
-                 <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
-                 <li><a class="dropdown-item" href="bebidas.html">Bebidas</a></li>                
-                 <li><a class="dropdown-item" href="hortfruit.html">Hortifruti</a></li>  
-                 <li><a class="dropdown-item" href="congeladosFrios.html">Frios e Congelados</a></li>             
-                              
-                 <li><a class="dropdown-item" href="padaria.html">Padaria</a></li>
-                 <li><a class="dropdown-item" href="beleza.html">Higiene e Beleza</a></li>
-                 <li><a class="dropdown-item" href="limpeza.html">Limpeza</a></li>
-                 </ul>
-              </li>
-              <li class="nav-item">
-               <a class="nav-link active" href="#parceiros">Parceiros</a>
-            </li>
-              <li class="nav-item">
-                 <a class="nav-link active" href="#midiasociais">Fale Conosco</a>
-              </li>
-              </ul>
-             
-             <form class="d-flex">
-                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                 <button class="btn btn-dark me-5" type="submit">Buscar</button>
-                 <a class="nav-link " href="pedidos.html">
-                  <img src="imagens/icons/shopping_cart_white_24dp.svg" alt="Carinho de compras" width="30" height="24" class="d-inline-block align-top text-white">
-                </a>
-                  <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
-                   <img src="imagens/icons/account_circle_white_24dp.svg" alt="login" width="30" height="25" class="d-inline-block align-top">
-                </a>
-             </form>
-             
-           </div>
-          </div>
-        
-        </nav>
-      </header>
+       <?php include_once("./../includes/barraNavegacao.php"); ?>
       <!--CABEÇALHO-->
 
     <div class="container-fluid">
@@ -78,37 +29,37 @@
           <div class="carousel-inner">
           
            <div class="carousel-item active">
-           <a href="congeladosFrios.html">
-            <img src="imagens/sadiaLog.jpg" class="d-block w-100" alt="1 Slide "  height="250">
+           <a href="congeladosFrios.php">
+            <img src="./../../imagens/sadiaLog.jpg" class="d-block w-100" alt="1 Slide "  height="250">
            </a>
            </div>
         
            <div class="carousel-item">
-            <a href="beleza.html">
-            <img src="imagens/Beleza/limpeza0.png" class="d-block w-100" alt="2 Slide" height="250">
+            <a href="beleza.php">
+            <img src="./../../imagens/Beleza/limpeza0.png" class="d-block w-100" alt="2 Slide" height="250">
            </a>
            </div>
 
            <div class="carousel-item">
-            <a href="hortfruit.html">
-            <img src="imagens/exemplo0.png" class="d-block w-100" alt="3 Slide" height="250">
+            <a href="hortfruit.php">
+            <img src="./../../imagens/exemplo0.png" class="d-block w-100" alt="3 Slide" height="250">
            </a>
            </div>
 
            <div class="carousel-item">
-            <a href="bebidas.html">
-            <img src="imagens/bedidas/bebidas.png" class="d-block w-100" alt="4 Slide" height="250">
+            <a href="bebidas.php">
+            <img src="./../../imagens/bedidas/bebidas.png" class="d-block w-100" alt="4 Slide" height="250">
            </a>
            </div>
 
            
           </div>
          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
-          <img src="imagens/icons/chevron-double-left.svg" alt="Anterior" height="30"  class="d-inline-block align-top">
+          <img src="./../../imagens/icons/chevron-double-left.svg" alt="Anterior" height="30"  class="d-inline-block align-top">
           <span class="visually-hidden">Anterior</span>
          </button>
          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
-          <img src="imagens/icons/chevron-double-right.svg" alt="Proximo" height="30" class="d-inline-block align-top">
+          <img src="./../../imagens/icons/chevron-double-right.svg" alt="Proximo" height="30" class="d-inline-block align-top">
          </button>
       </div>
       <!--CAROUSEL-->
@@ -119,55 +70,55 @@
        <div class="col">
         
         <div class="card h-100">
-          <img src="imagens/padaria/padaria.jpg" class="card-img-top h-50" alt="Padaria">
+          <img src="./../../imagens/padaria/padaria.jpg" class="card-img-top h-50" alt="Padaria">
           <div class="card-body">
             <h5 class="card-title">Padaria</h5>
             <p class="card-text">Conheça nossa padaria.</p>               
-            <a href="padaria.html" >Veja mais</a>
+            <a href="padaria.php" >Veja mais</a>
           </div>
          </div>
        </div>
 
        <div class="col">
         <div class="card h-100">
-          <img src="imagens/Beleza/beleza.jpg" class="card-img-top h-50" alt="Beleza">
+          <img src="./../../imagens/Beleza/beleza.jpg" class="card-img-top h-50" alt="Beleza">
           <div class="card-body">
             <h5 class="card-title">Higiene e Beleza</h5>              
             <p class="card-text">Conheça a sessão</p>
-            <a href="beleza.html" >Veja mais</a>
+            <a href="beleza.php" >Veja mais</a>
           </div>
         </div>
        </div>
 
        <div class="col">
         <div class="card h-100">
-          <img src="imagens/hortifruit/hotifruit.jpg" class="card-img-top h-50" alt="Hortifruit">
+          <img src="./../../imagens/hortifruit/hotifruit.jpg" class="card-img-top h-50" alt="Hortifruit">
           <div class="card-body">
             <h5 class="card-title">Hortifruit</h5>                
             <p class="card-text">Hortifruit sem agrotoxico</p>
-            <a href="hortfruit.html" >Veja mais</a>
+            <a href="hortfruit.php" >Veja mais</a>
           </div>
         </div>
        </div>
 
        <div class="col">
         <div class="card h-100">
-          <img src="imagens/friosCongelados/carnesDiver.jpg" class="card-img-top h-50" alt="Carnes & Aves">
+          <img src="./../../imagens/friosCongelados/carnesDiver.jpg" class="card-img-top h-50" alt="Carnes & Aves">
           <div class="card-body">
             <h5 class="card-title">Frios e Congelados</h5>
             <p class="card-text">Conheça nosso Frios</p>
-            <a href="congeladosFrios.html" >Veja mais</a>
+            <a href="congeladosFrios.php" >Veja mais</a>
           </div>
         </div>
        </div>
 
        <div class="col">
         <div class="card h-100">             
-          <img src="imagens/bedidas/bebidasQuentes.jpg" class="card-img-top h-50" alt="Bebidas">
+          <img src="./../../imagens/bedidas/bebidasQuentes.jpg" class="card-img-top h-50" alt="Bebidas">
           <div class="card-body">            
             <h5 class="card-title">Bebidas</h5>
             <p class="card-text">Bebidas com o melhor preço.</p>
-            <a href="bebidas.html" >Veja mais</a>
+            <a href="bebidas.php" >Veja mais</a>
           </div>
         </div>
        </div>       
@@ -177,26 +128,26 @@
       <footer class="container-fluid text-center mt-3 mb-3">  
         <h4 class="pt-3 text-white">PARCEIROS</h4>
         <a id="parceiros">
-          <img src="imagens/parceiros.png" class="img-fluid d-block w-100" />            
+          <img src="./../../imagens/parceiros.png" class="img-fluid d-block w-100" />            
         </a>
         
         <a id="cartoes">  
           <h5 class="text-white">FORMAS DE PAGAMENTO</h5> 
           <br>            
           <div class="modal-header d-flex justify-content-center">
-            <img src="imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
+            <img src="./../../imagens/cartoes.png" alt="FORMAS DE PAGAMENTO" class="img-fluid d-block"  width="900" >
           </div>
         </a>
        <br/> 
        <h5 id="midiasociais">MIDIAS SOCIAIS</h5>
       <a href="https://www.instagram.com" target="_blank">
-        <img class="mb-3" src="imagens/icons/instagram.svg" height="30" width="40">
+        <img class="mb-3" src="./../../imagens/icons/instagram.svg" height="30" width="40">
       </a>
         <a  href="https://api.whatsapp.com/send?phone=5571985547159&text=Fale%20comigo%20" target="_blank">
-         <img class="mb-3" src="imagens/icons/whatsapp.svg" height="30" width="40">
+         <img class="mb-3" src="./../../imagens/icons/whatsapp.svg" height="30" width="40">
         </a>
           <a href="numero.txt" target="_blank">
-           <img class="mb-3" src="imagens/icons/call_white_24dp.svg" height="30" width="40"> 
+           <img class="mb-3" src="./../../imagens/icons/call_white_24dp.svg" height="30" width="40"> 
           </a>
           
       </footer>
@@ -225,7 +176,7 @@
                 <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
             </div>
             <div class="d-flex justify-content-between mt-2">
-              <a href="#" data-toggle="modal" data-target="#cadastro" data-dismiss="modal">Fazer Cadastro</a>
+              <a href="cadastro.php" >Fazer Cadastro</a>
               <a href="#">Esqueci a senha</a>
             </div>
             <div class="d-grid gap-2">
@@ -240,7 +191,7 @@
       </div> 
     </div>
 
-    <!-- Modal Cadastro -->
+    <!-- Modal Cadastro 
 
     <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
       <div class="modal-dialog modal-xl" role="document">
@@ -278,19 +229,17 @@
         <div class="form-group">
           <label class="mb-3 mt-3" for="E-mail">Endereço</label>
           <input type="Endereco" name="Endereço" class="form-control" id="Endereco" placeholder="Endereço">
-      </div>
-      <div class="form-group">
+       </div>
+       <div class="form-group">
         <label class="mb-3 mt-3" for="Complemento">Complemento</label>
         <input type="Complemento" name="Complemento" class="form-control" id="Complemento" placeholder="Complemento">
+       </div>
+       <div class="d-grid gap-2 mt-2">
+       <button type="submit" class="btn btn-primary align-items-end" style="margin-top: 10px;">Finalizar cadastro</button>
+       </div>   
+      </form>
     </div>
-    <div class="d-grid gap-2 mt-2">
-      <button type="submit" class="btn btn-primary align-items-end" style="margin-top: 10px;">Finalizar cadastro</button>
-    </div>
-            
-            
-        </form>
-          </div>
-    <!-- Modal Cadastro -->
+     Modal Cadastro -->
           
     <!--Modal-->
 
