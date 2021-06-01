@@ -2,12 +2,35 @@
  require_once("../../controller/conexao.php");
  $stmt = $conn->prepare("select * from usuarios");
 
-$stmt->execute();
+ $stmt->execute();
 
 
+if(isset($_POST["CPF"])){
+    $CPF = utf8_decode($_POST["CPF"]);
+    $NOME = utf8_decode($_POST["NOME"]);
+    $SENHA = utf8_decode($_POST["SENHA"]);
+    $EMAIL = utf8_decode($_POST["EMAIL"]);
+    $ENDERECO = $_POST["ENDERECO"];
+    $NASCIMENTO = $_POST["NASCIMENTO"];
+    $CEP = $_POST["CEP"];
+    $CIDADE = $_POST["CIDADE"];
+try{ 
+    $stmt = $conn->prepare("INSERT INTO USUARIOS (cpfUser, nomeUser, senhaUser, emailUser, endereco, cidade, dataNasc, permissaoUser, estado_cepEstado) VALUES('$CPF','$NOME','$SENHA','$EMAIL','$ENDERECO', '$CIDADE','$NASCIMENTO', 'CLIENTE', '$CEP')");
+    $stmt->execute();
+    echo "executado..";
+
+    echo"INSERT INTO USUARIOS (cpfUser, nomeUser, senhaUser, emailUser, endereco, cidade, dataNasc, permissaoUser, estado_cepEstado) VALUES('$CPF','$NOME','$SENHA','$EMAIL','$ENDERECO','$NASCIMENTO','CLIENTE','$CIDADE',  $CEP)";
+}catch(PDOException $e){
+
+    echo"Erro conexão com o banco de dados: ".$e->getMessage();
+      
+}
+
+
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,18 +39,18 @@ $stmt->execute();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 <body>
-<form class="row g-3">
+<form class="row g-3" action="cadastro.php" method="POST">
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">CPF</label>
-    <input type="email" class="form-control" id="inputEmail4" name="CPF">
+    <input type="text" class="form-control" id="inputEmail4" name="CPF">
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">NOME</label>
-    <input type="password" class="form-control" id="inputPassword4" name="NOME">
+    <input type="name" class="form-control" id="inputPassword4" name="NOME">
   </div>
   <div class="col-12">
     <label for="inputAddress" class="form-label">SENHA</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="SENHA">
+    <input type="password" class="form-control" id="inputAddress" placeholder="1234 Main St" name="SENHA">
   </div>
   <div class="col-12">
     <label for="inputAddress2" class="form-label">EMAIL</label>
@@ -62,4 +85,3 @@ $stmt->execute();
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 </html>
-
