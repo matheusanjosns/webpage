@@ -1,8 +1,6 @@
-<!--CABEÇALHO-->   
-<?php require "barraNavegacao.php"; 
-             require "modal.php";             
-        ?>
-      <!--CABEÇALHO-->
+    <!--CABEÇALHO-->   
+    <?php require "barraNavegacao.php"; ?>
+    <!--CABEÇALHO-->
 <body>
 <form class="row g-3" action="cadUser" method="POST">
   <div class="col-md-6">

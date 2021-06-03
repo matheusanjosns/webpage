@@ -12,7 +12,7 @@
                 <input type="password" name="SENHA" class="form-control" id="senha" placeholder="Senha">
             </div>
             <div class="d-flex justify-content-between mt-2">
-              <a href="Cadastro.php" >Fazer Cadastro</a>
+              <a href="cadastro.php" >Fazer Cadastro</a>
               <a href="#">Esqueci a senha</a>
             </div>
             <div class="d-grid gap-2">

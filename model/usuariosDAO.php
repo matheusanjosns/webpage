@@ -1,6 +1,8 @@
 <?php
    require_once "Conexao.php";
+
    
+
     class UsuariosDAO{
         public function cadUser(){
             $minhaConexao = Conexao::getConexao(); 
@@ -24,9 +26,13 @@
             }
         }
         public function loginUser(){
+            //session_start();
 
             $minhaConexao = Conexao::getConexao(); 
 
+            
+                echo "QUERY FOI EXECUTADA";
+            
                 if(isset($_POST['CPF']) && empty($_POST['CPF']) && isset($_POST['SENHA']) && empty($_POST['SENHA'])){
                                           
                     $CPF = addslashes($_POST['CPF']);
@@ -34,22 +40,17 @@
 
                     $sql = $minhaConexao->prepare("SELECT * FROM USUARIOS WHERE cpfUser = '$CPF' AND senhaUSer = '$SENHA'");
                      $sql->execute();
-                                  
-                }
-               
-
-            /* if(isset($_POST["CPF"])){
-                $CPF = utf8_decode($_POST["CPF"]);
-                $SENHA = utf8_decode($_POST["SENHA"]);
-                
-                $sql = $minhaConexao->prepare("select * from USUARIOS where cpfUser = '{$CPF}'and senhaUser ='{$SENHA}'");
-                
-                echo "select * from USUARIOS where cpfUser = '{$CPF}' and senhaUser = '{$SENHA}' ";
-                
-                $sql->execute(); 
-                
-                header("location:cadastro.php");               
-            }  */
+                      if(!$sql){
+                        die(" FALHA NA CONSULTA");
+                      }    
+                      $informacao = $sql->fetch(PDO::FETCH_ASSOC);
+                      if(empty($informacao)){
+                        echo "USUARIO OU SENHA INCORRETO";
+                      }else{
+                          $_SESSION["USER_PORTAL"] = $informacao["cpfUser"];
+                        header('location: home.php');
+                      }                     
+                }         
         }      
     }
 ?>

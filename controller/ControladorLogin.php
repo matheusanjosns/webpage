@@ -15,11 +15,9 @@ class ControladorLogin implements IControlador{
       $this->usuario->setcpfUser($_POST["CPF"]);
      
       $this->usuario->setsenhaUser(utf8_decode($_POST["SENHA"]));
-      
-      
+           
       $this->usuario->loginUser();
- 
-      header('location: home.php');  
+  
    }
 }
    
