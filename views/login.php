@@ -1,13 +1,7 @@
-<!-- Modal --> 
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header d-flex justify-content-center">
-            <h5 class="modal-title" id="TituloModalCentralizado">Login</h5>
-            
-          </div>
-          <div class="modal-body">
-          <form action="loginUser" method="post">
+<?php
+    require "barraNavegacao.php"
+?>
+<form action="loginUser" method="post">
             <div class="form-group">
                 <label class="mb-3" for="usuario">Login:</label>
                 <input type="text" name="CPF" class="form-control" id="usuario"  placeholder="Seu CPF">
@@ -26,9 +20,6 @@
           </div>
             
         </form>
-          </div>
-    
-         
-        </div>
-      </div> 
-    </div>
+<?php 
+    require "rodape.php"
+?>

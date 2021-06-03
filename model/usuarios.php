@@ -66,9 +66,6 @@
         public function setestado_cepEstado(){
             return $this->estado_cepEstado;
         }
-            
-        
-         
         public function cadUser(){
             $usuariosDAO = new UsuariosDAO();
             $usuariosDAO->cadUser($this);
@@ -77,9 +74,9 @@
             $usuariosDAO = new UsuariosDAO();
             $usuariosDAO->loginUser($this);
         }
-        public function editUser(){
-            $usuariosDAO = new UsuariosDAO();
-            $usuariosDAO->editUser($this);
-        }
+        //public function editUser(){
+           // $usuariosDAO = new UsuariosDAO();
+          //  $usuariosDAO->editUser($this);
+       // }
     }
 ?>

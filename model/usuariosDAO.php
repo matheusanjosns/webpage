@@ -24,16 +24,32 @@
             }
         }
         public function loginUser(){
+
             $minhaConexao = Conexao::getConexao(); 
-            (isset($_POST["CPF"])){
+
+                if(isset($_POST['CPF']) && empty($_POST['CPF']) && isset($_POST['SENHA']) && empty($_POST['SENHA'])){
+                                          
+                    $CPF = addslashes($_POST['CPF']);
+                    $SENHA = addslashes($_POST['SENHA']);
+
+                    $sql = $minhaConexao->prepare("SELECT * FROM USUARIOS WHERE cpfUser = '$CPF' AND senhaUSer = '$SENHA'");
+                     $sql->execute();
+                                  
+                }
+               
+
+            /* if(isset($_POST["CPF"])){
                 $CPF = utf8_decode($_POST["CPF"]);
                 $SENHA = utf8_decode($_POST["SENHA"]);
-                $sql = $minhaConexao->prepare("select * from USUARIOS where cpfUser = '{$CPF}' and senhaUser = '{$SENHA}' ");
-                echo ("select * from USUARIOS where cpfUser = '{$CPF}' and senhaUser = '{$SENHA}' ");
+                
+                $sql = $minhaConexao->prepare("select * from USUARIOS where cpfUser = '{$CPF}'and senhaUser ='{$SENHA}'");
+                
+                echo "select * from USUARIOS where cpfUser = '{$CPF}' and senhaUser = '{$SENHA}' ";
+                
                 $sql->execute(); 
-                    header("location:home.php"); 
-   
-            }      
+                
+                header("location:cadastro.php");               
+            }  */
         }      
     }
-   ?>
+?>

@@ -12,7 +12,7 @@
 
       <!--CABEÇALHO-->    
        <?php require "barraNavegacao.php";  
-             require "modal.php";             
+            
         ?>
       <!--CABEÇALHO-->
 

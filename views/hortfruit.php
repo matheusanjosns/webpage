@@ -8,9 +8,7 @@
 </head>
     <body class="corpo">
       <!--CABEÇALHO-->   
-      <?php require "barraNavegacao.php"; 
-             require "modal.php";             
-        ?>
+      <?php require "barraNavegacao.php";?>
       <!--CABEÇALHO-->
 
     <!--PROMOÇÕES-->

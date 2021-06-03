@@ -47,7 +47,7 @@
                  <a class="nav-link " href="pedidos.php">
                   <img src="../imagens/icons/shopping_cart_white_24dp.svg" alt="Carinho de compras" width="30" height="24" class="d-inline-block align-top text-white">
                 </a>
-                  <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+                  <a class="nav-link" href="login.php"  data-target="#login">
                    <img src="../imagens/icons/account_circle_white_24dp.svg" alt="login" width="30" height="25" class="d-inline-block align-top">
                 </a>
              </form>

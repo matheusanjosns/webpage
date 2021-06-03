@@ -19,7 +19,7 @@ class ControladorLogin implements IControlador{
       
       $this->usuario->loginUser();
  
-      
+      header('location: home.php');  
    }
 }
    

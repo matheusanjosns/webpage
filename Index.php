@@ -20,8 +20,10 @@
 					break;
 			    case "VIEWS/LOGINUSER":
 					require "controller/ControladorLogin.php";
-                  $controlador = new ControladorLogin();
-                   $controlador->processaRequisicao();
+                    $controlador = new ControladorLogin();
+                    $controlador->processaRequisicao();
+				   
+				   echo"CAI AQUI ";
 					break;
 				//case "ADDITEMCARRINHO":
 			//		require "controller/ControladorAddItemCarrinho.php";
