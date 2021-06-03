@@ -74,10 +74,12 @@
             $usuariosDAO->cadUser($this);
        }
         public function excluiUser(){
-
+            $usuariosDAO = new UsuariosDAO();
+            $usuariosDAO->excluiUser($this);
         }
         public function editUser(){
-
+            $usuariosDAO = new UsuariosDAO();
+            $usuariosDAO->editUser($this);
         }
     }
 ?>

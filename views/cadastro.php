@@ -66,7 +66,7 @@ try{
   </div>
   <div class="col-md-6">
     <label for="inputCity" class="form-label">DATA DE NASCIMENTO</label>
-    <input type="text" class="form-control" id="inputCity" name="NASCIMENTO">
+    <input type=date class="form-control" id="inputCity" name="NASCIMENTO">
   </div>
   <div class="col-md-6">
     <label for="inputCity" class="form-label">CEP ESTADO</label>
