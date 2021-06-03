@@ -1,7 +1,7 @@
 <?php
 class Conexao{
     public static function getConexao(){
-        $servername = "localhost:3306"; 
+        $servername = "localhost:3308"; 
         $username = "root";
         $password = "";
         $dbname = "mydb";
@@ -14,7 +14,7 @@ class Conexao{
         }
         catch(PDOException $e) {
          echo "entrou no catch".$e->getmessage();
-         return null;
+         return $e;
        }
     }
 

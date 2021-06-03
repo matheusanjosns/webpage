@@ -5,7 +5,7 @@ class UsuariosDAO{
     public function cadUser(){
         $minhaConexao = Conexao::getConexao(); 
         
-
+         
         if(isset($_POST["CPF"])){
 
             $CPF = utf8_decode($_POST["CPF"]);
@@ -20,14 +20,9 @@ class UsuariosDAO{
         
                 
             $sql = $minhaConexao->prepare("INSERT INTO USUARIOS (cpfUser, nomeUser, senhaUser, emailUser, endereco, cidade, dataNasc, permissaoUser, estado_cepEstado) VALUES('$CPF','$NOME','$SENHA','$EMAIL','$ENDERECO', '$CIDADE','$NASCIMENTO', 'CLIENTE', '$CEP')");
-            $sql->execute();
-                
-           
-
-
+            $sql->execute();  
+        }  
         
-    }
-    
-}      
+    }      
 }
 ?>
