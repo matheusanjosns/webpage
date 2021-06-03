@@ -31,11 +31,11 @@
   </div>
   <div class="col-md-6">
     <label for="inputCity" class="form-label">DATA DE NASCIMENTO</label>
-    <input type=date class="form-control" id="inputCity" name="NASCIMENTO">
+    <input type=date class="form-control" data-mask="00/00/0000" maxlength="10" id="inputCity" name="NASCIMENTO">
   </div>
   <div class="col-md-6">
-    <label for="inputCity" class="form-label">CEP ESTADO</label>
-    <input type="text" class="form-control" id="inputCity" placeholder="CEP CIDADE EM QUE RESIDE" name="CEP">
+    <label for="inputCity" class="form-label">CEP </label>
+    <input type="text" class="form-control cep-mask" cep-mask="00000-000" id="inputCity" placeholder="CEP ONDE VOCÊ RESIDE" name="CEP">
   </div>
   <div class="col-12">
     <button type="submit" class="btn btn-primary" onclick="UserCad()">Cadastrar</button>
