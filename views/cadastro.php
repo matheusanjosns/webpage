@@ -1,11 +1,11 @@
 <?php 
- require_once("../../controller/conexao.php");
- $stmt = $conn->prepare("select * from usuarios");
+ require_once("../model/Conexao.php");
+ //$stmt = $conn->prepare("select * from usuarios");
 
- $stmt->execute();
+ //$stmt->execute();
 
 
-if(isset($_POST["CPF"])){
+/*if(isset($_POST["CPF"])){
     $CPF = utf8_decode($_POST["CPF"]);
     $NOME = utf8_decode($_POST["NOME"]);
     $SENHA = utf8_decode($_POST["SENHA"]);
@@ -27,7 +27,7 @@ try{
 }
 
 
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -39,7 +39,7 @@ try{
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 <body>
-<form class="row g-3" action="cadastro.php" method="POST">
+<form class="row g-3" action="cadUser" method="POST">
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">CPF</label>
     <input type="text" class="form-control" id="inputEmail4" name="CPF">
