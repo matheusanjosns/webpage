@@ -18,11 +18,11 @@
 					$controlador = new ControladorNovoUsuario();
 					$controlador->processaRequisicao();
 					break;
-			   // case "LISTARLIVRO":
-				//	require "controller/ControladorLivroListar.php";
-                 //   $controlador = new ControladorLivroListar();
-                 //   $controlador->processaRequisicao();
-				//	break;
+			    case "VIEWS/LOGINUSER":
+					require "controller/ControladorLogin.php";
+                  $controlador = new ControladorLogin();
+                   $controlador->processaRequisicao();
+					break;
 				//case "ADDITEMCARRINHO":
 			//		require "controller/ControladorAddItemCarrinho.php";
 			//		require_once 'Model/CarrinhoSession.php';

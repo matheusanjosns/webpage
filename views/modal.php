@@ -7,15 +7,15 @@
             
           </div>
           <div class="modal-body">
-          <form action="index.php" method="post">
+          <form action="loginUser" method="post">
             <div class="form-group">
                 <label class="mb-3" for="usuario">Login:</label>
-                <input type="text" name="usuario" class="form-control" id="usuario"  placeholder="Seu CPF">
+                <input type="text" name="CPF" class="form-control" id="usuario"  placeholder="Seu CPF">
             </div>
 
             <div class="form-group">
                 <label class="mb-3 mt-3" for="senha">Senha:</label>
-                <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
+                <input type="password" name="SENHA" class="form-control" id="senha" placeholder="Senha">
             </div>
             <div class="d-flex justify-content-between mt-2">
               <a href="Cadastro.php" >Fazer Cadastro</a>

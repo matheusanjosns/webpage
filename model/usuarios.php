@@ -73,9 +73,9 @@
             $usuariosDAO = new UsuariosDAO();
             $usuariosDAO->cadUser($this);
        }
-        public function excluiUser(){
+        public function loginUser(){
             $usuariosDAO = new UsuariosDAO();
-            $usuariosDAO->excluiUser($this);
+            $usuariosDAO->loginUser($this);
         }
         public function editUser(){
             $usuariosDAO = new UsuariosDAO();

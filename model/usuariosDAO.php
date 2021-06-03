@@ -23,26 +23,17 @@
                 $sql->execute();   
             }
         }
-                public function loginUser(){
-                    $minhaConexao = Conexao::getConexao(); 
-                    
-    
-                    if(isset($_POST["CPF"])){
-    
-                        $CPF = utf8_decode($_POST["CPF"]);
-                        
-                        $SENHA = utf8_decode($_POST["SENHA"]);
-                        
-                    
-                    
-                            
-                        $sql = $minhaConexao->prepare("select * from USUARIOS Where cpfUser = '{$CPF}' and senhaUser = '{$SENHA}' ");
-                        $sql->execute(); 
-                        
-                            header("location:home.php"); 
-
-                    }   
-        
-                }      
+        public function loginUser(){
+            $minhaConexao = Conexao::getConexao(); 
+            (isset($_POST["CPF"])){
+                $CPF = utf8_decode($_POST["CPF"]);
+                $SENHA = utf8_decode($_POST["SENHA"]);
+                $sql = $minhaConexao->prepare("select * from USUARIOS where cpfUser = '{$CPF}' and senhaUser = '{$SENHA}' ");
+                echo ("select * from USUARIOS where cpfUser = '{$CPF}' and senhaUser = '{$SENHA}' ");
+                $sql->execute(); 
+                    header("location:home.php"); 
+   
+            }      
+        }      
     }
-?>
+   ?>
