@@ -1,7 +1,9 @@
 <?php
+ //session_start(); 
 class Conexao{
     public static function getConexao(){
-        $servername = "localhost:3308"; 
+        
+        $servername = "localhost:3306"; 
         $username = "root";
         $password = "";
         $dbname = "mydb";
@@ -11,6 +13,7 @@ class Conexao{
            // set the PDO error mode to exception
            $minhaConexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
            return $minhaConexao;
+
         }
         catch(PDOException $e) {
          echo "entrou no catch".$e->getmessage();

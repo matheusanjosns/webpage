@@ -25,6 +25,13 @@
 				   
 				   echo"CAI AQUI ";
 					break;
+			    case "VIEWS/CADPROD":
+					require "controller/ControladorNovoProduto.php";
+                    $controlador = new ControladorNovoProduto();
+                    $controlador->processaRequisicao();
+				   
+				   
+					break;
 				//case "ADDITEMCARRINHO":
 			//		require "controller/ControladorAddItemCarrinho.php";
 			//		require_once 'Model/CarrinhoSession.php';

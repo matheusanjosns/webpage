@@ -1,3 +1,7 @@
+
+<?php
+  require_once "../model/Conexao.php";
+  $minhaConexao = Conexao::getConexao(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,9 +15,36 @@
 
        <!--CABEÇALHO-->   
        <?php require "barraNavegacao.php";?>
+       <!-- <?php 
+       
+        
+        
+        /* echo(($_SESSION["USER_PORTAL"]));
+         
+            if( isset($_SESSION["USER_PORTAL"]) ){
+                $user = $_SESSION["USER_PORTAL"];
+                $saudacao = $minhaConexao->prepare("SELECT * FROM usuarios WHERE cpfUser = '{$user}'");
+                
+                $saudacao_login = $saudacao->execute();
+                
+                if(!$saudacao_login){
+                    echo("Falha na consulta ao banco de dados");
+                }else{
+                  $informacao = $saudacao ->fetch(PDO::FETCH_ASSOC);
+                     //= mysqli_fetch_assoc($saudacao_login);
+                    $nome = $informacao["nomeUser"];
+                    echo $informacao["nomeUser"]; */
+                }
+        ?>
+            <div id ="header_saudacao"><h5>Bem vindo, <?php /* echo $nome */?> - <a href="sair.php">Sair</a></h5></div>
+        <?php 
+            }/* else {
+              echo "sessão não iniciada"; */
+            }
+        ?> -->
       <!--CABEÇALHO-->
     <div class="container-fluid">
-
+        
       <!--CAROUSEL-->
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
