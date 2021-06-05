@@ -31,16 +31,17 @@
             $minhaConexao = Conexao::getConexao(); 
 
             
-                echo "QUERY FOI EXECUTADA";
+                
             
-                if(isset($_POST['CPF']) && empty($_POST['CPF']) && isset($_POST['SENHA']) && empty($_POST['SENHA'])){
-                                          
+                //if(isset($_POST['CPF']) && empty($_POST['CPF']) && isset($_POST['SENHA']) && empty($_POST['SENHA'])){
+                    echo "QUERY FOI EXECUTADA";
                     $CPF = addslashes($_POST['CPF']);
                     $SENHA = addslashes($_POST['SENHA']);
 
                     $sql = $minhaConexao->prepare("SELECT * FROM USUARIOS WHERE cpfUser = '$CPF' AND senhaUSer = '$SENHA'");
-                     $sql->execute();
-                      if(!$sql){
+                    $consulta = $sql->execute();
+                    
+                      if(!$consulta){
                         die(" FALHA NA CONSULTA");
                       }    
                       $informacao = $sql->fetch(PDO::FETCH_ASSOC);
@@ -50,7 +51,7 @@
                           $_SESSION["USER_PORTAL"] = $informacao["cpfUser"];
                         header('location: home.php');
                       }                     
-                }         
+               //}         
         }      
     }
 ?>
