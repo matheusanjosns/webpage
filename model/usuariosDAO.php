@@ -39,8 +39,9 @@
                     $SENHA = addslashes($_POST['SENHA']);
 
                     $sql = $minhaConexao->prepare("SELECT * FROM USUARIOS WHERE cpfUser = '$CPF' AND senhaUSer = '$SENHA'");
-                     $sql->execute();
-                      if(!$sql){
+                     $consulta = $sql->execute();
+
+                      if(!$consulta){
                         die(" FALHA NA CONSULTA");
                       }    
                       $informacao = $sql->fetch(PDO::FETCH_ASSOC);
