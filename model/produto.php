@@ -64,6 +64,11 @@
             $produtoDAO = new ProdutoDAO();
             $produtoDAO->cadProduto($this);
        }
+
+        public function ListarBebidas(){
+            $produtoDAO = new ProdutoDAO();
+            return $produtoDAO->ListarBebidas($this);
+       }
         
     }
 ?>

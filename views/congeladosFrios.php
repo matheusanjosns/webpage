@@ -1,3 +1,14 @@
+<?php
+  require_once "../model/Conexao.php";
+  $minhaConexao = Conexao::getConexao(); 
+  
+  // Consulta ao banco de dados
+  $Produto = $minhaConexao->prepare("select * from produto where categoria_idCat = '3' and promocao = '0'");
+  $Produto -> execute();
+  $promoProduto = $minhaConexao->prepare("select * from produto where categoria_idCat = '3' and promocao = '1'");
+  $promoProduto -> execute();
+  
+  ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,7 +22,7 @@
 
   <!--CABEÇALHO-->   
   <?php require "barraNavegacao.php"; 
-             require "modal.php";             
+                        
         ?>
       <!--CABEÇALHO-->
 
@@ -23,19 +34,22 @@
 
     <div class="row">
 
-      <div class="col-lg-4 col-md-6">
-        <div class="card m-2">
-          <img src="../imagens/friosCongelados/batataFrita.jpg" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="100" height="300">
-          <div class="card-body">
-            <p class="card-text"> </p>
-            <h4><s>DE: R$ 19,90</s></h4>
-            <h5>POR: R$ 12,90</h5>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>   
+    <?php while($listaProdutoPromo = $promoProduto->fetch(PDO::FETCH_ASSOC)){ ?>
+          <div class="col-lg-4 col-md-6">
+            <div class="card m-2">
+              <img src="<?php echo $listaProdutoPromo['imgUrl'] ?>" class="card-img-top" alt="whisky Royal Salute" width="100" height="300">
+              <div class="card-body">
+                <p class="card-text"><?php echo $listaProdutoPromo['nomeProduto'] ?></p>
+                <h4><s>DE: R$ <?php echo number_format($listaProdutoPromo['valorProduto'],2, ',', '.') ?></s></h4>
+                <?php $desconto = 0.8 * number_format($listaProdutoPromo['valorProduto'],2, ',', '.'); ?>
+                <h5>POR: R$ <?php echo number_format($desconto,2, ',', '.') ?></h5>
+                <button type="button"  class="btn btn-primary">ADICIONAR</button>
+              </div>
+            </div>
+           </div>   
+           <?php } ?>  
 
-       <div class="col-lg-4 col-md-6">
+       <!-- <div class="col-lg-4 col-md-6">
         <div class="card m-2">
           <img src="../imagens/friosCongelados/pizzaCalabresa.jpg" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="100" height="300">
           <div class="card-body">                
@@ -58,7 +72,7 @@
             <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
           </div>
         </div>
-       </div>   
+       </div>    -->
 
     </div>       
 </div> 
@@ -66,17 +80,20 @@
 
   <div class="row">
         
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/friosCongelados/fileDepeito.jpg" class="card-img-top" alt="FILE DE PEITO" width="250" height="250px">
-       <div class="card-body">
-         <p class="card-text">FILE DE PEITO</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
+  <?php while($listaProduto = $Produto->fetch(PDO::FETCH_ASSOC)){ ?>
+        <div class="col-lg-2 col-md-4">
+          <div class="card ">
+            <img src="<?php echo $listaProduto['imgUrl'] ?>" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="250" height="250px">
+            <div class="card-body">
+              <p class="card-text"><?php echo $listaProduto['nomeProduto'] ?></p>
+              <p><?php echo number_format($listaProduto['valorProduto'],2, ',', '.') ?></p>
+              <button type="button" class="btn btn-primary">ADICIONAR</button>
+            </div>
+          </div>
+         </div>         
+        <?php } ?>
    
-    <div class="col-lg-2 col-md-4">
+    <!-- <div class="col-lg-2 col-md-4">
       <div class="card m-2">
        <img src="../imagens/friosCongelados/lasanha.jpg" class="card-img-top" alt="LASANHA BOLONHESA" width="250" height="250px">
        <div class="card-body">
@@ -224,7 +241,7 @@
          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
        </div>
      </div>
-    </div>
+    </div> -->
 
   </div>
   <hr>

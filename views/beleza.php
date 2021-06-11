@@ -1,3 +1,14 @@
+<?php
+  require_once "../model/Conexao.php";
+  $minhaConexao = Conexao::getConexao(); 
+  
+  // Consulta ao banco de dados
+  $Produto = $minhaConexao->prepare("select * from produto where categoria_idCat = '5' and promocao = '0'");
+  $Produto -> execute();
+  $promoProduto = $minhaConexao->prepare("select * from produto where categoria_idCat = '5' and promocao = '1'");
+  $promoProduto -> execute();
+  
+  ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,22 +24,72 @@
       <?php require "barraNavegacao.php";             
         ?>
       <!--CABEÇALHO-->
+  <!--PROMOÇÕES-->
+  <div class="promo m-4">
+        <h1>
+          PROMOÇÕES
+        </h1>
 
+        <div class="row">
+        <?php while($listaProdutoPromo = $promoProduto->fetch(PDO::FETCH_ASSOC)){ ?>
+          <div class="col-lg-4 col-md-6">
+            <div class="card m-2">
+              <img src="<?php echo $listaProdutoPromo['imgUrl'] ?>" class="card-img-top" alt="whisky Royal Salute" width="100" height="300">
+              <div class="card-body">
+                <p class="card-text"><?php echo $listaProdutoPromo['nomeProduto'] ?></p>
+                <h4><s>DE: R$ <?php echo number_format($listaProdutoPromo['valorProduto'],2, ',', '.') ?></s></h4>
+                <?php $desconto = 0.8 * number_format($listaProdutoPromo['valorProduto'],2, ',', '.'); ?>
+                <h5>POR: R$ <?php echo number_format($desconto,2, ',', '.') ?></h5>
+                <button type="button"  class="btn btn-primary">ADICIONAR</button>
+              </div>
+            </div>
+           </div>   
+           <?php } ?>  
+           <!-- <div class="col-lg-4 col-md-6">
+            <div class="card m-2">
+              <img src="../imagens/bedidas/ginTanqueray.jpg" class="card-img-top" alt="Gin Tanqueray" width="100" height="300">
+              <div class="card-body">                
+                <p class="card-text"> Gin Tanqueray</p>
+                <h4><s>DE: R$ 149,90</s></h4>
+                <h5>POR: R$ 90,90</h5>
+                <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
+              </div>
+            </div>
+           </div>   
+
+          
+           <div class="col-lg-4 col-md-12">
+            <div class="card m-2">
+              <img src="../imagens/bedidas/relBull.jpg" class="card-img-top" alt="Red Bull" width="100" height="300">
+              <div class="card-body">
+                <p class="card-text">Red Bull 250ML</p>
+                <h4><s>DE: R$ 10,00</s></h4>
+                <h5>POR R$ 5,90</h5>
+                <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
+              </div>
+            </div>
+           </div>   
+
+ -->        </div>       
+    </div> 
+    <!--PROMOÇÕES-->
   <hr>
   <div class="row m-2">
         
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/Beleza/gelBozano.jpg" class="card-img-top" alt="Gel Bozano" width="250" height="250">
-       <div class="card-body">
-         <p class="card-text">Gel Bozano</p>
-         <p>R$ 11,00</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>         
-     </div>       
-    </div>
+  <?php while($listaProduto = $Produto->fetch(PDO::FETCH_ASSOC)){ ?>
+        <div class="col-lg-2 col-md-4">
+          <div class="card ">
+            <img src="<?php echo $listaProduto['imgUrl'] ?>" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="250" height="250px">
+            <div class="card-body">
+              <p class="card-text"><?php echo $listaProduto['nomeProduto'] ?></p>
+              <p><?php echo number_format($listaProduto['valorProduto'],2, ',', '.') ?></p>
+              <button type="button" class="btn btn-primary">ADICIONAR</button>
+            </div>
+          </div>
+         </div>         
+        <?php } ?>
    
-    <div class="col-lg-2 col-md-4">
+    <!-- <div class="col-lg-2 col-md-4">
      <div class="card m-2">
        <img src="../imagens/Beleza/kitExo.png" class="card-img-top" alt="Kit Exo" width="250" height="250">
        <div class="card-body">
@@ -191,7 +252,7 @@
            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
          </div>
        </div>
-       </div>
+       </div> -->
    
    </div>
 

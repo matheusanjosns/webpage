@@ -1,3 +1,14 @@
+<?php
+  require_once "../model/Conexao.php";
+  $minhaConexao = Conexao::getConexao(); 
+  
+  // Consulta ao banco de dados
+  $Produto = $minhaConexao->prepare("select * from produto where categoria_idCat = '2' and promocao = '0'");
+  $Produto -> execute();
+  $promoProduto = $minhaConexao->prepare("select * from produto where categoria_idCat = '2' and promocao = '1'");
+  $promoProduto -> execute();
+  
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,19 +30,22 @@
 
     <div class="row">
 
-      <div class="col-lg-4 col-md-6">
-        <div class="card m-2">
-          <img src="../imagens/hortifruit/amora.png" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="100" height="200">
-          <div class="card-body">
-            <p class="card-text"> </p>
-            <h4><s>DE: R$ 5,00</s></h4>
-            <h5>POR: R$ 2,00</h5>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>   
+    <?php while($listaProdutoPromo = $promoProduto->fetch(PDO::FETCH_ASSOC)){ ?>
+          <div class="col-lg-4 col-md-6">
+            <div class="card m-2">
+              <img src="<?php echo $listaProdutoPromo['imgUrl'] ?>" class="card-img-top" alt="whisky Royal Salute" width="100" height="300">
+              <div class="card-body">
+                <p class="card-text"><?php echo $listaProdutoPromo['nomeProduto'] ?></p>
+                <h4><s>DE: R$ <?php echo number_format($listaProdutoPromo['valorProduto'],2, ',', '.') ?></s></h4>
+                <?php $desconto = 0.8 * number_format($listaProdutoPromo['valorProduto'],2, ',', '.'); ?>
+                <h5>POR: R$ <?php echo number_format($desconto,2, ',', '.') ?></h5>
+                <button type="button"  class="btn btn-primary">ADICIONAR</button>
+              </div>
+            </div>
+           </div>   
+    <?php } ?>  
 
-       <div class="col-lg-4 col-md-6">
+       <!-- <div class="col-lg-4 col-md-6">
         <div class="card m-2">
           <img src="../imagens/hortifruit/kiwi.jpg" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="100" height="200">
           <div class="card-body">                
@@ -54,7 +68,7 @@
             <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
           </div>
         </div>
-       </div>   
+       </div>    -->
 
     </div>       
 </div> 
@@ -63,18 +77,20 @@
      
     <div class="row m-2">
         
-      <div class="col-lg-2 col-md-4">
-       <div class="card m-2">
-         <img src="../imagens/hortifruit/maça.png" class="card-img-top" alt="MAÇA" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-text">Maça</p>
-           <p>R$ 1,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
+    <?php while($listaProduto = $Produto->fetch(PDO::FETCH_ASSOC)){ ?>
+        <div class="col-lg-2 col-md-4">
+          <div class="card ">
+            <img src="<?php echo $listaProduto['imgUrl'] ?>" class="card-img-top" alt="Refrigerante Coca Cola 2L" width="250" height="250px">
+            <div class="card-body">
+              <p class="card-text"><?php echo $listaProduto['nomeProduto'] ?></p>
+              <p><?php echo number_format($listaProduto['valorProduto'],2, ',', '.') ?></p>
+              <button type="button" class="btn btn-primary">ADICIONAR</button>
+            </div>
+          </div>
+         </div>         
+        <?php } ?>
      
-      <div class="col-lg-2 col-md-4">
+      <!-- <div class="col-lg-2 col-md-4">
         <div class="card m-2">
          <img src="../imagens/hortifruit/maçaVerde.jpg" class="card-img-top" alt="MAÇA VERDE" width="250" height="250px">
          <div class="card-body">
@@ -238,7 +254,7 @@
          </div>
        </div>
       </div>
-
+ -->
     </div>
     <hr>
 <!-- Script contador carrinho -->
