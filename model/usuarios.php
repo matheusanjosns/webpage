@@ -6,11 +6,13 @@
         private $nomeUser;
         private $senhaUser;
         private $emailUSer;
-        private $endereco;
-        private $cidade;
         private $dataNasc;
         private $permissaoUser;
+        private $endereco;
+        private $cidade;
         private $estado_cepEstado;
+        private $bairro;
+        private $estado;
 
         public function getcpfUser(){
             return $this->cpfUser;
@@ -39,6 +41,12 @@
         public function getestado_cepEstado(){
             return $this->estado_cepEstado;
         }
+        public function getebairro(){
+            return $this->bairro;
+        }
+        public function getestado(){
+            return $this->estado;
+        }
         public function setcpfUser(){
             return $this->cpfUser;
         }
@@ -65,6 +73,12 @@
         }
         public function setestado_cepEstado(){
             return $this->estado_cepEstado;
+        }
+        public function setbairro(){
+            return $this->bairro;
+        }
+        public function setestado(){
+            return $this->estado;
         }
         public function cadUser(){
             $usuariosDAO = new UsuariosDAO();

@@ -19,6 +19,8 @@ class ControladorNovoUsuario implements IControlador{
       $this->usuario->setendereco($_POST["ENDERECO"]);
       $this->usuario->setcidade($_POST["CIDADE"]);
       $this->usuario->setdataNasc($_POST["NASCIMENTO"]);
+      $this->usuario->setestado($_POST["ESTADO"]);
+      $this->usuario->setbairro($_POST["BAIRRO"]);
       
       $this->usuario->setestado_cepEstado($_POST["CEP"]);
       

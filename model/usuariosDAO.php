@@ -18,15 +18,17 @@
                 $NASCIMENTO = $_POST["NASCIMENTO"];
                 $CEP = $_POST["CEP"];
                 $CIDADE = $_POST["CIDADE"];
+                $BAIRRO = $_POST["BAIRRO"];
+                $ESTADO = $_POST["ESTADO"];
             
             
                     
-                $sql = $minhaConexao->prepare("INSERT INTO USUARIOS (cpfUser, nomeUser, senhaUser, emailUser, endereco, cidade, dataNasc, permissaoUser, estado_cepEstado) VALUES('$CPF','$NOME','$SENHA','$EMAIL','$ENDERECO', '$CIDADE','$NASCIMENTO', 'CLIENTE', '$CEP')");
+                $sql = $minhaConexao->prepare("INSERT INTO USUARIOS (cpfUser, nomeUser, senhaUser, emailUser, endereco, cidade, dataNasc, permissaoUser, cep, estado, bairro) VALUES('$CPF','$NOME','$SENHA','$EMAIL','$ENDERECO', '$CIDADE','$NASCIMENTO', 'CLIENTE', '$CEP', '$ESTADO', '$BAIRRO')");
                 $sql->execute();   
             }
         }
         public function loginUser(){
-            //session_start();
+            session_start();
 
             $minhaConexao = Conexao::getConexao(); 
 
