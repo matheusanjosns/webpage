@@ -2,19 +2,17 @@
   session_start();
   require_once "../model/Conexao.php";
   $minhaConexao = Conexao::getConexao(); 
-  $user = $_SESSION["user_portal"];
-  echo $user;
-        if( !isset($_SESSION["user_portal"]) ) {
-            header("location:home.php");
+  $user = $_SESSION["USER_PORTAL"];
+  
+        if( !isset($_SESSION["USER_PORTAL"]) ) {
+           
         }
   
   // Consulta ao banco de dados
-  $Produto = $minhaConexao->prepare("select * from produto where categoria_idCat = '1' and promocao = '0'");
+  $Produto = $minhaConexao->prepare("select * from produto where categoria_idCat = '4' and promocao = '0'");
   $Produto -> execute();
-  $promoProduto = $minhaConexao->prepare("select * from produto where categoria_idCat = '1' and promocao = '1'");
+  $promoProduto = $minhaConexao->prepare("select * from produto where categoria_idCat = '4' and promocao = '1'");
   $promoProduto -> execute();
-  
-
   //adicionar ao carrinho
 
   $prod = "SELECT * FROM produto ";
@@ -42,7 +40,7 @@
   if(isset($_POST["Prod_id"])){
 
       $prodId = $_POST["Prod_id"];
-      $user = $_SESSION["user_portal"];
+      $user = $_SESSION["USER_PORTAL"];
      
       $checaCar = $minhaConexao->prepare("SELECT * FROM carrinho WHERE produto_idProduto = {$prodId} && usuarios_cpfUser = {$user}");
 
@@ -53,35 +51,27 @@
           die("Consulta não realizada");
 
       }else {
-          $contaItem = $con_checaCar->rowCount();
-          echo $contaItem;
+          $contaItem = $checaCar->rowCount();
       }
       if($contaItem == 0){
           $inserirCar = $minhaConexao->prepare("INSERT INTO carrinho (usuarios_cpfUser, produto_idProduto, qtdCar) values ({$user}, {$prodId}, 1) ");
-          echo $inserirCar;
           $operacao_inserirCar = $inserirCar->execute();
           
           if(!$operacao_inserirCar){
            die("Erro na consulta");   
-          }else {
-              //header("Refresh: 0");
           }
       }else if($contaItem == 1){
           $buscaCar = $minhaConexao->prepare("SELECT qtdCar from carrinho where usuarios_cpfUser = {$user} && produto_idProduto = {$prodId} ");
-          echo $buscaCar;
+          //echo $buscaCar;
           $conQtdItemCar = $buscaCar->execute();
-          $qtdItemCar = $conQtdItemCar->fetch(PDO::FETCH_ASSOC);
-          $aux = $qtdItemCar['Carrinho_prod_qtd'] + 1;
+          $qtdItemCar = $buscaCar->fetch(PDO::FETCH_ASSOC);
+          $aux = $qtdItemCar['qtdCar'] + 1;
 
           $aumentaQtdItem = $minhaConexao->prepare("UPDATE carrinho SET qtdCar = {$aux} WHERE usuarios_cpfUser = {$user} && produto_idProduto = {$prodId} "); 
-          echo $aumentaQtdItem;
           $addItemCar = $aumentaQtdItem->execute();
           
           if(!$con_checaCar){
-
-              die("NÃO FOI ADICIONADO");
-          }else {
-             // header("Refresh: 0");
+            die("NÃO FOI ADICIONADO");
           }
       }
   }
@@ -117,44 +107,21 @@
     <?php while($listaProdutoPromo = $promoProduto->fetch(PDO::FETCH_ASSOC)){ ?>
           <div class="col-lg-4 col-md-6">
             <div class="card m-2">
-              <img src="<?php echo $listaProdutoPromo['imgUrl'] ?>" class="card-img-top" alt="whisky Royal Salute" width="100" height="300">
+              <img src="<?php echo $listaProdutoPromo['imgUrl'] ?>" class="card-img-top" alt="<?php echo $listaProdutoPromo['nomeProduto'] ?>" width="100" height="300">
               <div class="card-body">
                 <p class="card-text"><?php echo $listaProdutoPromo['nomeProduto'] ?></p>
                 <h4><s>DE: R$ <?php echo number_format($listaProdutoPromo['valorProduto'],2, ',', '.') ?></s></h4>
                 <?php $desconto = 0.8 * number_format($listaProdutoPromo['valorProduto'],2, ',', '.'); ?>
                 <h5>POR: R$ <?php echo number_format($desconto,2, ',', '.') ?></h5>
-                <button type="button" title="<?php echo $listaProdutoPromo['idProduto']?>" id="addcar<?php echo $listaProdutoPromo['idProduto'] ?>" class="btn btn-primary">ADICIONAR</button>
+                <form action="padaria.php" method="POST">
+              <input type="hidden" name="Prod_id" value="<?php echo $listaProdutoPromo['idProduto'] ?>">
+              <button type="submit"  id="addcar" class="btn btn-primary">ADICIONAR</button>
+              </form>
               </div>
             </div>
            </div>   
     <?php } ?>   
-
-       <!-- <div class="col-lg-4 col-md-6">
-        <div class="card m-2">
-          <img src="../imagens/padaria/CaixaLacta.jpg" class="card-img-top" alt="Caixa de Bombom" width="100" height="300">
-          <div class="card-body">                
-            <p class="card-text"> </p>
-            <h4><s>DE: R$ 13,64</s></h4>
-            <h5>POR: R$ 7,00</h5>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>   
-
-      
-       <div class="col-lg-4 col-md-12">
-        <div class="card m-2">
-          <img src="../imagens/padaria/biscoitoPolvilho.jpg" class="card-img-top" alt="Biscoito Polvilho" width="100" height="300">
-          <div class="card-body">
-            <p class="card-text"> </p>
-            <h4><s>DE: R$ 4,00</s></h4>
-            <h5>POR R$ 2,50</h5>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>    -->
-
-    </div>       
+</div>       
 </div> 
 <!--PROMOÇÕES-->
      
@@ -167,177 +134,14 @@
             <div class="card-body">
               <p class="card-text"><?php echo $listaProduto['nomeProduto'] ?></p>
               <p><?php echo number_format($listaProduto['valorProduto'],2, ',', '.') ?></p>
-              <button type="button" title="<?php echo $listaProduto['idProduto']?>" id="addcar<?php echo $listaProduto['idProduto'] ?>" class="btn btn-primary">ADICIONAR</button>
+              <form action="padaria.php" method="POST">
+              <input type="hidden" name="Prod_id" value="<?php echo $listaProduto['idProduto'] ?>">
+              <button type="submit"  id="addcar" class="btn btn-primary">ADICIONAR</button>
+              </form>
             </div>
           </div>
          </div>         
   <?php } ?>
-      
-      <!--  <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/paoHambuger.jpg" class="card-img-top" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-text">Pão de Hamburger</p>
-            <p>R$ 0,50</p>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-      
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/paoSal.jpg" class="card-img-top" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-text">Pão de Sal</p>
-            <P>R$ 0,80</P>
-            <button type="button " onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/paoLeite.jpg" class="card-img-top" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-text">Pão de Leite</p>
-            <p>R$ 0,90</p>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/paoFatia.jpg" class="card-img-top" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-text">Pão Fatia</p>
-            <p>R$ 4,00</p>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/bombaChocolate.jpg" class="card-img-top" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-text">Bomba de Chocolate</p>
-            <p>R$ 2,50</p>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/beijinho.jpg" class="card-img-top" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-text">Beijinho</p>
-            <p>R$ 0,60</p>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/casadinho.jpg" class="card-img-top" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-text">Casadinho</p>
-            <p>R$ 0,60</p>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/Croissant.jpg" class="card-img-top" alt="15" width="250" height="250">
-          <div class="card-body">
-           <p class="card-text">Croissant</p>
-           <P>R$ 1,20</P>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-         <div class="card m-2">
-          <img src="../imagens/padaria/brigadeiro.png" class="card-img-top" alt="15" width="250" height="250">
-          <div class="card-body">
-           <p class="card-text">Brigadeiro</p>
-           <p>R$ 0,50</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/boloBrigadeiro.jpg" class="container-fluid" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-title">Bolo de Brigadeiro</p>
-            <p>R$ 50,00</p>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/donuts.jpg" class="container-fluid" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-title">Donuts de Chocolate</p>
-            <p>R$ 3,50</p>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/boloCobertura1.png" class="container-fluid" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-title">Bolo Decorado</p>
-            <p>R$ 50,00</p>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/coxinha.jpg" class="container-fluid" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-title">Coxinha de Frango</p>
-            <P>R$ 3,00</P>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>
-
-       <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-          <img src="../imagens/padaria/pastel.jpg" class="card-img-top" alt="15" width="250" height="250">
-          <div class="card-body">
-            <p class="card-text">Pastel de Carne</p>
-            <p>R$ 2,50</p>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-        </div>
-     
-        <div class="col-lg-2 col-md-4">
-          <div class="card m-2">
-            <img src="../imagens/padaria/paodeQueijo.png" class="card-img-top" alt="Pão de Queijo" width="250" height="250">
-            <div class="card-body">
-              <p class="card-text">Pão de Queijo</p>
-              <p>R$ 5,00</p>
-              <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-            </div>
-          </div>
-          </div> -->
-      
       </div>
      
      <hr>
@@ -355,7 +159,7 @@ var value = parseInt(document.getElementById('qtdCar').value,10);
   document.getElementById('qtdCar').value = value;
 }
 </script>
-<script>
+<!-- <script>
             //função ajax para add ao carinho
             $('button').click(function(e){
                 e.preventDefault();
@@ -380,7 +184,7 @@ var value = parseInt(document.getElementById('qtdCar').value,10);
                     console.log("Erro no sistema");
                 })
             });
-    </script>
+    </script> -->
 <?php require "rodape.php"; ?>
   </body>
 </html>

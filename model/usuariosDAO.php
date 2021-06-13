@@ -28,7 +28,7 @@
             }
         }
         public function loginUser(){
-            session_start();
+            //session_start();
 
             $minhaConexao = Conexao::getConexao(); 
 
@@ -51,6 +51,7 @@
                         echo "USUARIO OU SENHA INCORRETO";
                       }else{
                           $_SESSION["USER_PORTAL"] = $informacao["cpfUser"];
+                          echo $informacao["cpfUser"];
                         header('location: home.php');
                       }                     
                //}         

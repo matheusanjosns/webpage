@@ -1,6 +1,12 @@
 <?php
+  session_start();
   require_once "../model/Conexao.php";
   $minhaConexao = Conexao::getConexao(); 
+  $user = $_SESSION["USER_PORTAL"];
+  echo $user;
+        if( !isset($_SESSION["USER_PORTAL"]) ) {
+            //header("location:home.php");
+        } 
   
   // Consulta ao banco de dados
   $Produto = $minhaConexao->prepare("select * from produto where categoria_idCat = '6' and promocao = '0'");
@@ -8,6 +14,79 @@
   $promoProduto = $minhaConexao->prepare("select * from produto where categoria_idCat = '6' and promocao = '1'");
   $promoProduto -> execute();
   
+  //adicionar ao carrinho
+
+  $prod = "SELECT * FROM produto ";
+
+  if(isset($_GET["codigo"])) {
+
+      $id = $_GET["codigo"];
+
+      $prod .= "WHERE idProduto = {$id} ";
+
+  }
+
+  $con_prod = $minhaConexao->prepare ("$prod");
+  $con_prod-> execute();
+
+  if(!$con_prod){
+
+      die("Erro na consulta");
+
+  }
+
+
+  $info_prod = $con_prod->fetch(PDO::FETCH_ASSOC);
+
+  if(isset($_POST["Prod_id"])){
+
+      $prodId = $_POST["Prod_id"];
+      $user = $_SESSION["USER_PORTAL"];
+     
+      $checaCar = $minhaConexao->prepare("SELECT * FROM carrinho WHERE produto_idProduto = {$prodId} && usuarios_cpfUser = {$user}");
+
+      $con_checaCar = $checaCar-> execute();
+
+      if(!$con_checaCar){
+
+          die("Consulta não realizada");
+
+      }else {
+          $contaItem = $checaCar->rowCount();
+          echo $contaItem;
+      }
+      if($contaItem == 0){
+          $inserirCar = $minhaConexao->prepare("INSERT INTO carrinho (usuarios_cpfUser, produto_idProduto, qtdCar) values ({$user}, {$prodId}, 1) ");
+          //echo $inserirCar;
+          $operacao_inserirCar = $inserirCar->execute();
+          
+          if(!$operacao_inserirCar){
+           die("Erro na consulta");   
+          }else {
+              //header("Refresh: 0");
+          }
+      }else if($contaItem == 1){
+          $buscaCar = $minhaConexao->prepare("SELECT qtdCar from carrinho where usuarios_cpfUser = {$user} && produto_idProduto = {$prodId} ");
+          //echo $buscaCar;
+          $conQtdItemCar = $buscaCar->execute();
+          $qtdItemCar = $buscaCar->fetch(PDO::FETCH_ASSOC);
+          $aux = $qtdItemCar['qtdCar'] + 1;
+
+          $aumentaQtdItem = $minhaConexao->prepare("UPDATE carrinho SET qtdCar = {$aux} WHERE usuarios_cpfUser = {$user} && produto_idProduto = {$prodId} "); 
+          //echo $aumentaQtdItem;
+          $addItemCar = $aumentaQtdItem->execute();
+          
+          if(!$con_checaCar){
+
+              die("NÃO FOI ADICIONADO");
+          }else {
+             // header("Refresh: 0");
+          }
+      }
+  }
+
+  //fim adicionar ao carrinho        
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -44,38 +123,15 @@
                 <h4><s>DE: R$ <?php echo number_format($listaProdutoPromo['valorProduto'],2, ',', '.') ?></s></h4>
                 <?php $desconto = 0.8 * number_format($listaProdutoPromo['valorProduto'],2, ',', '.'); ?>
                 <h5>POR: R$ <?php echo number_format($desconto,2, ',', '.') ?></h5>
-                <button type="button"  class="btn btn-primary">ADICIONAR</button>
+                <form action="limpeza.php" method="POST">
+              <input type="hidden" name="Prod_id" value="<?php echo $listaProdutoPromo['idProduto'] ?>">
+              <button type="submit"  id="addcar" class="btn btn-primary">ADICIONAR</button>
+              </form>
               </div>
             </div>
            </div>   
     <?php } ?>  
-
-       <!-- <div class="col-lg-4 col-md-6">
-        <div class="card m-2">
-          <img src="../imagens/limpeza/AmacianteDowny.jpg" class="card-img-top" alt="Amaciante Downy" width="100" height="200">
-          <div class="card-body">                
-            <p class="card-text">Amaciante Downy </p>
-            <h4><s>DE: R$ 26,35</s></h4>
-            <h5>POR: R$ 15,00</h5>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>   
-
-      
-       <div class="col-lg-4 col-md-12">
-        <div class="card m-2">
-          <img src="../imagens/limpeza/rodoPia.jpg" class="card-img-top" alt="Rodo Pia" width="100" height="200">
-          <div class="card-body">
-            <p class="card-text">Rodo Pia </p>
-            <h4><s>DE: R$ 5,49</s></h4>
-            <h5>POR R$ 3,00</h5>
-            <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-          </div>
-        </div>
-       </div>    -->
-
-    </div>       
+ </div>       
 </div> 
 <!--PROMOÇÕES-->
 
@@ -89,193 +145,17 @@
             <div class="card-body">
               <p class="card-text"><?php echo $listaProduto['nomeProduto'] ?></p>
               <p><?php echo number_format($listaProduto['valorProduto'],2, ',', '.') ?></p>
-              <button type="button" class="btn btn-primary">ADICIONAR</button>
+              <form action="limpeza.php" method="POST">
+              <input type="hidden" name="Prod_id" value="<?php echo $listaProduto['idProduto'] ?>">
+              <button type="submit"  id="addcar" class="btn btn-primary">ADICIONAR</button>
+              </form>
             </div>
           </div>
          </div>         
   <?php } ?>
-   
-    <!-- <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/qboa.jpg" class="card-img-top" alt="Água Sanitaria Qboa" width="250" height="250">
-       <div class="card-body">
-         <p class="card-text">Água Sanitaria Qboa 1UND</p>
-         <p>R$ 3,00</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-   
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/sabaoLiquido.jpg" class="card-img-top" alt="Sabão Liquido Ype" width="250" height="250">
-       <div class="card-body">
-         <p class="card-text">Sabão Liquido Ype 1UND</p>
-         <P>R$ 2,20</P>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/shampoPet.jpg" class="card-img-top" alt="Shampo Pet" width="250" height="250">
-       <div class="card-body">
-         <p class="card-text">Shampo Pet 1L</p>
-         <p>R$ 20,00</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/veja.jpg" class="card-img-top" alt="Desenfetante Veja" width="250" height="250">
-       <div class="card-body">
-         <p class="card-text">Desenfetante Veja 1UND</p>
-         <p>R$ 4,50</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/sabaoEmPo.jpg" class="card-img-top" alt="Sabão em Po OMO" width="250" height="250">
-       <div class="card-body">
-         <p class="card-text">Sabão em Po OMO 1PC</p>
-         <p>R$ 20,00</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/mop.jpg" class="card-img-top" alt="Limpador MOP" width="250" height="250">
-       <div class="card-body">
-         <p class="card-text">Limpador MOP 1UND</p>
-         <p>R$ 69,00</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/pano-de-limpeza.jpg" class="card-img-top" alt="Pano para Limpeza" width="250" height="250">
-       <div class="card-body">
-         <p class="card-text">Pano para Limpeza 3UND</p>
-         <p>R$ 12,60</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/alcol 70.jpg" class="card-img-top" alt="Álcool 70%" width="250" height="250">
-       <div class="card-body">
-        <p class="card-text">Álcool 70% 1L</p>
-        <P>R$ 5,90</P>
-        <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-      <div class="card m-2">
-       <img src="../imagens/limpeza/germicida.jpg" class="card-img-top" alt="Germicida Hidrosteril Plus" width="250" height="250">
-       <div class="card-body">
-        <p class="card-text">Germicida Hidrosteril Plus 1L</p>
-        <p>R$ 15,00</p>
-        <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/amacianteConfort.jpg" class="container-fluid" alt="Amaciante Confort" width="250" height="250">
-       <div class="card-body">
-         <p class="card-title">Amaciante Confort 1UND</p>
-         <p>R$ 15,00</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/vanish.jpg" class="container-fluid" alt="alvejante Vanish" width="250" height="250">
-       <div class="card-body">
-         <p class="card-title">Alvejante Vanish 1UND</p>
-         <p>R$ 18,18</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/sacoParaLixoPreto.jpg" class="container-fluid" alt="Saco para lixo preto" width="250" height="250">
-       <div class="card-body">
-         <p class="card-title">Saco para lixo preto 10UND</p>
-         <p>R$ 10,00</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/luvaLonga.jpg" class="container-fluid" alt="Luva Longa " width="250" height="250">
-       <div class="card-body">
-         <p class="card-title">Luva Longa 4UND</p>
-         <P>R$ 5,00</P>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-    </div>
-
-    <div class="col-lg-2 col-md-4">
-     <div class="card m-2">
-       <img src="../imagens/limpeza/balde.jpg" class="card-img-top" alt="Balde" width="250" height="250">
-       <div class="card-body">
-         <p class="card-text">Balde 1UND</p>
-         <p>R$ 5,50</p>
-         <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-       </div>
-     </div>
-     </div>
-  
-     <div class="col-lg-2 col-md-4">
-       <div class="card m-2">
-         <img src="../imagens/limpeza/aromatizadorEletrico.jpg" class="card-img-top" alt="Aromatizador Eletrico" width="250" height="250">
-         <div class="card-body">
-           <p class="card-text">Aromatizador Eletrico 1UND</p>
-           <p>R$ 25,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-       </div>
-   
-   </div> -->
 
    <hr>
-<!-- Script contador carrinho -->
-<script>
-  function incrementaValor(valorMaximo){
-var value = parseInt(document.getElementById('qtdCar').value,10);
-  value = isNaN(value) ? 0 : value;
-  if(value >= valorMaximo) {
-      value = valorMaximo;
-  }else{
-      value++;
-  }
-  document.getElementById('qtdCar').value = value;
-}
-</script>
+
 <?php require "rodape.php"; ?>
 </body>
 </html>

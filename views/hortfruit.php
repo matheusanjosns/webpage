@@ -1,6 +1,12 @@
 <?php
+  session_start();
   require_once "../model/Conexao.php";
   $minhaConexao = Conexao::getConexao(); 
+  $user = $_SESSION["USER_PORTAL"];
+  echo $user;
+        if( !isset($_SESSION["USER_PORTAL"]) ) {
+            //header("location:home.php");
+        } 
   
   // Consulta ao banco de dados
   $Produto = $minhaConexao->prepare("select * from produto where categoria_idCat = '2' and promocao = '0'");
@@ -8,6 +14,78 @@
   $promoProduto = $minhaConexao->prepare("select * from produto where categoria_idCat = '2' and promocao = '1'");
   $promoProduto -> execute();
   
+  //adicionar ao carrinho
+
+  $prod = "SELECT * FROM produto ";
+
+  if(isset($_GET["codigo"])) {
+
+      $id = $_GET["codigo"];
+
+      $prod .= "WHERE idProduto = {$id} ";
+
+  }
+
+  $con_prod = $minhaConexao->prepare ("$prod");
+  $con_prod-> execute();
+
+  if(!$con_prod){
+
+      die("Erro na consulta");
+
+  }
+
+
+  $info_prod = $con_prod->fetch(PDO::FETCH_ASSOC);
+
+  if(isset($_POST["Prod_id"])){
+
+      $prodId = $_POST["Prod_id"];
+      $user = $_SESSION["USER_PORTAL"];
+     
+      $checaCar = $minhaConexao->prepare("SELECT * FROM carrinho WHERE produto_idProduto = {$prodId} && usuarios_cpfUser = {$user}");
+
+      $con_checaCar = $checaCar-> execute();
+
+      if(!$con_checaCar){
+
+          die("Consulta não realizada");
+
+      }else {
+          $contaItem = $checaCar->rowCount();
+          echo $contaItem;
+      }
+      if($contaItem == 0){
+          $inserirCar = $minhaConexao->prepare("INSERT INTO carrinho (usuarios_cpfUser, produto_idProduto, qtdCar) values ({$user}, {$prodId}, 1) ");
+          //echo $inserirCar;
+          $operacao_inserirCar = $inserirCar->execute();
+          
+          if(!$operacao_inserirCar){
+           die("Erro na consulta");   
+          }else {
+              //header("Refresh: 0");
+          }
+      }else if($contaItem == 1){
+          $buscaCar = $minhaConexao->prepare("SELECT qtdCar from carrinho where usuarios_cpfUser = {$user} && produto_idProduto = {$prodId} ");
+          //echo $buscaCar;
+          $conQtdItemCar = $buscaCar->execute();
+          $qtdItemCar = $buscaCar->fetch(PDO::FETCH_ASSOC);
+          $aux = $qtdItemCar['qtdCar'] + 1;
+
+          $aumentaQtdItem = $minhaConexao->prepare("UPDATE carrinho SET qtdCar = {$aux} WHERE usuarios_cpfUser = {$user} && produto_idProduto = {$prodId} "); 
+          //echo $aumentaQtdItem;
+          $addItemCar = $aumentaQtdItem->execute();
+          
+          if(!$con_checaCar){
+
+              die("NÃO FOI ADICIONADO");
+          }else {
+             // header("Refresh: 0");
+          }
+      }
+  }
+
+  //fim adicionar ao carrinho 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -39,7 +117,10 @@
                 <h4><s>DE: R$ <?php echo number_format($listaProdutoPromo['valorProduto'],2, ',', '.') ?></s></h4>
                 <?php $desconto = 0.8 * number_format($listaProdutoPromo['valorProduto'],2, ',', '.'); ?>
                 <h5>POR: R$ <?php echo number_format($desconto,2, ',', '.') ?></h5>
-                <button type="button"  class="btn btn-primary">ADICIONAR</button>
+                <form action="hortfruit.php" method="POST">
+              <input type="hidden" name="Prod_id" value="<?php echo $listaProdutoPromo['idProduto'] ?>">
+              <button type="submit"  id="addcar" class="btn btn-primary">ADICIONAR</button>
+              </form>
               </div>
             </div>
            </div>   
@@ -84,192 +165,20 @@
             <div class="card-body">
               <p class="card-text"><?php echo $listaProduto['nomeProduto'] ?></p>
               <p><?php echo number_format($listaProduto['valorProduto'],2, ',', '.') ?></p>
-              <button type="button" class="btn btn-primary">ADICIONAR</button>
+              <form action="hortfruit.php" method="POST">
+              <input type="hidden" name="Prod_id" value="<?php echo $listaProduto['idProduto'] ?>">
+              <button type="submit"  id="addcar" class="btn btn-primary">ADICIONAR</button>
+              </form>
             </div>
           </div>
          </div>         
         <?php } ?>
      
-      <!-- <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/maçaVerde.jpg" class="card-img-top" alt="MAÇA VERDE" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-text">Maçã Verde</p>
-           <p>R$ 1,10</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-     
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/melancia.jpg" class="card-img-top" alt="Melancia" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-text">Melancia</p>
-           <p>R$ 3,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/melao.jpg" class="card-img-top" alt="Melão" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-text">Melão</p>
-           <p>R$ 2,50</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/morango.jpg" class="card-img-top" alt="Morango" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-text">Morango</p>
-           <p>R$ 5,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/pera.jpg" class="card-img-top" alt="Pera" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-text">Pera</p>
-           <p>R$ 2,90</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/uva.jpg" class="card-img-top" alt="Uva" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-text">Uva</p>
-           <p>R$ 2,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/uvaVerde.jpg" class="card-img-top" alt="Uva verde" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-text">Uva Verde</p>
-           <p>R$ 2,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/banana.jpg" class="card-img-top" alt="Banana" width="250" height="250px">
-         <div class="card-body">
-          <p class="card-text">Banana</p>
-          <p>R$ 3,00</p>
-          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/caja.jpg" class="card-img-top" alt="Caja" width="250" height="250px">
-         <div class="card-body">
-          <p class="card-text">Caja</p>
-          <p>R$ 4,00</p>
-          <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-       <div class="card m-2">
-         <img src="../imagens/hortifruit/mamão.jpg" class="container-fluid" alt="Mamão" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-title">Mamão</p>
-           <p>R$ 2,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/laranja.jpg" class="container-fluid" alt="Laranja" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-title">Laranja</p>
-           <p>R$ 2,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/abacaxi.png" class="container-fluid" alt="Abacaxi" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-title">Abacaxi</p>
-           <p>R$ 2,50</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/acerola.jpg" class="container-fluid" alt="Acerola" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-title">Acerola</p>
-           <p>R$ 3,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/maracuja.jpg" class="card-img-top" alt="Maracuja" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-text">Maracuja</p>
-           <p>R$ 2,00</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4">
-        <div class="card m-2">
-         <img src="../imagens/hortifruit/acai.png" class="card-img-top" alt="Açai" width="250" height="250px">
-         <div class="card-body">
-           <p class="card-text">Açai</p>
-           <p>R$ 3,90</p>
-           <button type="button" onclick="incrementaValor(99);return false;" class="btn btn-primary">ADICIONAR</button>
-         </div>
-       </div>
-      </div>
- -->
+      
     </div>
     <hr>
 <!-- Script contador carrinho -->
-<script>
-  function incrementaValor(valorMaximo){
-var value = parseInt(document.getElementById('qtdCar').value,10);
-  value = isNaN(value) ? 0 : value;
-  if(value >= valorMaximo) {
-      value = valorMaximo;
-  }else{
-      value++;
-  }
-  document.getElementById('qtdCar').value = value;
-}
-</script>
+
 <?php require "rodape.php"; ?>
   </body>
 </html>
