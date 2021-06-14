@@ -4,6 +4,7 @@
   $minhaConexao = Conexao::getConexao(); 
   //$user = $_SESSION["user_portal"];
   if( isset($_SESSION["user_portal"]) ){
+    header("location: login.php");
     //$user = $_SESSION["user_portal"];
   //echo $user;
   require_once "../model/Conexao.php";
@@ -31,7 +32,7 @@
 </div>
 <?php 
                 }
-                }
+                } 
             ?>
 <!DOCTYPE html>
 <html lang="pt-br">

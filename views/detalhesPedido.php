@@ -70,6 +70,21 @@
 
         </tbody>
     </table>
+    <?php 
+        $Pedido = $minhaConexao->prepare("SELECT * from pedidos where idpedido = {$id}");
+        $Pedido -> execute();
+        $dadosPedido = $Pedido->fetch(PDO::FETCH_ASSOC);
+        $idcomprador = $dadosPedido['usuarios_cpfUser'];
+        $Comprador = $minhaConexao->prepare("SELECT * from usuarios where cpfUser = {$idcomprador}");
+        $Comprador -> execute();
+        $dadosComprador = $Comprador->fetch(PDO::FETCH_ASSOC);
+        $endereco = $dadosComprador['endereco'];
+        $bairro = $dadosComprador['bairro'];
+        $cidade = $dadosComprador['cidade'];
+        $estado = $dadosComprador['estado'];
+    ?>
+    <div class="d-inline-flex"><h5 class="m-2">Local da entrega:</h5> 
+    <p class="m-2"><?php echo $endereco ?>, <?php echo $bairro ?>, <?php echo $cidade ?>, <?php echo $estado ?></p></div>
     <h5 class="col mt-3 d-flex justify-content-center">Valor total da Compra: R$
             <?php echo number_format($valorPedido,2, ',', '.')  ?></h5>
     <hr>

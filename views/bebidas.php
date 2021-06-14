@@ -53,7 +53,7 @@
  
        }else {
            $contaItem = $checaCar->rowCount();
-           echo $contaItem;
+           //echo $contaItem;
        }
        if($contaItem == 0){
            $inserirCar = $minhaConexao->prepare("INSERT INTO carrinho (usuarios_cpfUser, produto_idProduto, qtdCar) values ({$user}, {$prodId}, 1) ");

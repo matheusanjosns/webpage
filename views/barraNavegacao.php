@@ -42,14 +42,17 @@
               </ul>
              
              <form class="d-flex">
-                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                 <button class="btn btn-dark me-5" type="submit">Buscar</button>
+                 
                  <a class="nav-link " href="pedidos.php">
                   <img src="../imagens/icons/shopping_cart_white_24dp.svg" alt="Carinho de compras" width="30" height="24" class="d-inline-block align-top text-white">
                 </a>
-                  <a class="nav-link" href="login.php"  data-target="#login">
+                  <a class="nav-link active dropdown-toggle" href="#" id="user" role="button" data-bs-toggle="dropdown" aria-expanded="false"  data-target="#login">
                    <img src="../imagens/icons/account_circle_white_24dp.svg" alt="login" width="30" height="25" class="d-inline-block align-top">
                 </a>
+                <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="user">
+                 <li><a class="dropdown-item" href="pedidosFeitos.php">Meus Pedidos</a></li>                
+                 <li><a class="dropdown-item" href="sair.php">Sair</a></li>  
+                 
              </form>
              
            </div>
