@@ -15,8 +15,17 @@
       $mensagem = publicarArquivo($_FILES['IMG']);
   }
     ?>
+    <!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛒COMPRA CERTA | HOME</title>
+</head>
 <body>
-<div class="row">
+<div class="row m-3">
     <div  height=150px width= 150px>
     <?php if(isset($_POST["enviar"] ) ){ ?>
     <img src="<?php echo $url ?>" width="150" height="150">
@@ -42,7 +51,7 @@
         ?>
       </div>
 </div>
-<form class="row g-3" action="cadProd" method="POST">
+<form class="row g-3 m-3" action="cadProd" method="POST">
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">NOME</label>
     <input type="text" class="form-control cpf-mask" id="inputEmail4" placeholder="INFORME O NOME DO PRODUTO" name="NOME">
@@ -56,7 +65,7 @@
     <input type="number" class="form-control" id="inputAddress" placeholder="INFORME A QUANTIDADE" name="QTD">
   </div>
   <input type="hidden" name="IMG" Value="<?php if(!empty($url)){echo $url;} else{0;}?>" >
-  <div class="col-md-6">
+  <div class="col-md-4">
     <label for="inputCity" class="form-label">PROMOCAO</label>
     <select name="PROMOCAO" class="form-select">
       <option value="1">Ativar</option>
@@ -69,7 +78,7 @@
   
   
   ?>
-  <div class="col-md-6">
+  <div class="col-md-4">
     <label for="inputCity" class="form-label">CATEGORIA</label>
     <select name="IDCATEGORIA" class="form-select">
     <?php

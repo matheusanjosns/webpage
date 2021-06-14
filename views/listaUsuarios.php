@@ -70,48 +70,46 @@
     <?php 
         $status = $_GET["codigo"];
       if($status == 'todos'){
-          $Pedidos = $minhaConexao->prepare("select * from pedidos");
-            $Pedidos -> execute();
+          $Usuarios = $minhaConexao->prepare("select * from usuarios");
+            $Usuarios -> execute();
       }else {
-      $Pedidos = $minhaConexao->prepare("select * from pedidos where situacao = {$status}");
-      $Pedidos -> execute();
+      $Usuarios = $minhaConexao->prepare("select * from usuarios where permissaoUser = {$status}");
+      $Usuarios -> execute();
     }
       ?>
 
     <!--CABEÇALHO-->
     <div class="text-center">
-        <h4 class="pt-3 text-dark">Pedidos</h4>
+        <h4 class="pt-3 text-dark">Usuários</h4>
     </div>
     <table class="table kt-table table-striped m-3 responsiva">
         <thead class="thead-dark">
 
             <tr>
-                <th scope="col">Pedido</th>
-                <th scope="col">Valor</th>
-                <th scope="col">Situação</th>
-                <th scope="col">Avaliação</th>
-                <th scope="col">Ações</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Permissão</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 0; $valorTotal = 0; ?>
             <?php 
-                while($listaPedidos = $Pedidos->fetch(PDO::FETCH_ASSOC)){ 
-                $pedido = $listaPedidos['idpedido'];  
-                $valor = number_format($listaPedidos['valorTotal'],2, ',', '.');  
-                $situacao = $listaPedidos['situacao'];  
-                $avaliacao = $listaPedidos['avaliacao'];  
-                $dataEntrega = $listaPedidos['dataEntrega']; 
+                while($listaUsuarios = $Usuarios->fetch(PDO::FETCH_ASSOC)){ 
+                $CPF = $listaUsuarios['cpfUser'];  
+                $nome = $listaUsuarios['nomeUser'];  
+                $email = $listaUsuarios['emailUser'];  
+                $permissao = $listaUsuarios['permissaoUser'];  
+                 
                 
                 
                ?>
 
             <tr>
-                <td data-titulo="Pedido"><?php echo $pedido ?></td>
-                <td data-titulo="Valor"><?php echo $valor ?></td>
-                <td data-titulo="Situação"><?php echo $situacao ?></td>
-                <td data-titulo="Situação"><?php echo $avaliacao ?></td>
-                <td data-titulo="Ações"><a href="detalhesPedido.php?codigo=<?php echo $pedido ?>" class="btn btn-primary">Detalhes</a></td>
+                <td data-titulo="CPF"><?php echo $CPF ?></td>
+                <td data-titulo="Nome"><?php echo $nome ?></td>
+                <td data-titulo="Email"><?php echo $email ?></td>
+                <td data-titulo="Permissão"><?php echo $permissao ?></td>
             </tr>
             <?php } ?>
 

@@ -26,7 +26,7 @@ class ControladorNovoUsuario implements IControlador{
       
       $this->usuario->cadUser();
  
-      header('Location:home.php', true,302);
+      header('Location:login.php', true,302);
    }
 }
    

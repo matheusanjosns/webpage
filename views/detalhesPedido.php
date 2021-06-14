@@ -21,7 +21,37 @@
 <body class="corfundo">
 
   <!--CABEÇALHO-->
-  <?php require "barraNavegacao.php"; 
+  <?php 
+  $sql = $minhaConexao->prepare("SELECT * FROM USUARIOS WHERE cpfUser = '$user'");
+  $consulta = $sql->execute();
+      
+   if(!$consulta){
+     die(" FALHA NA CONSULTA");
+   }    
+   $informacao = $sql->fetch(PDO::FETCH_ASSOC);
+   $permissao = $informacao["permissaoUser"];
+   if(empty($informacao)){
+     echo "USUARIO OU SENHA INCORRETO";
+   }else{
+       $_SESSION["USER_PORTAL"] = $informacao["cpfUser"];
+       
+       switch ($permissao){
+         case "CLIENTE":
+            require "barraNavegacao.php";
+             break;
+         case "ADM":
+            require "barraNavegacaoADM.php";
+             break;
+         case "SEPARADOR":
+            require "barraFunc.php";
+             break;
+         case "ENTREGADOR":
+            require "barraFunc.php";
+             break;
+       }
+   }
+   
+   
      $id = $_GET["codigo"];
      $valorPedido = 0;
       //Consultando itens do pedido

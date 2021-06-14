@@ -27,6 +27,12 @@
                 $sql->execute();   
             }
         }
+        public function cadUserAdm(){
+            $minhaConexao = Conexao::getConexao(); 
+            
+    
+            
+        }
         public function loginUser(){
             //session_start();
 
@@ -42,17 +48,32 @@
 
                     $sql = $minhaConexao->prepare("SELECT * FROM USUARIOS WHERE cpfUser = '$CPF' AND senhaUSer = '$SENHA'");
                      $consulta = $sql->execute();
-
+                         
                       if(!$consulta){
                         die(" FALHA NA CONSULTA");
                       }    
                       $informacao = $sql->fetch(PDO::FETCH_ASSOC);
+                      $permissao = $informacao["permissaoUser"];
                       if(empty($informacao)){
                         echo "USUARIO OU SENHA INCORRETO";
                       }else{
                           $_SESSION["USER_PORTAL"] = $informacao["cpfUser"];
                           echo $informacao["cpfUser"];
-                        header('location: home.php');
+                          switch ($permissao){
+                            case "CLIENTE":
+                                header('location: home.php');
+                                break;
+                            case "ADM":
+                                header('location: homeAdmin.php');
+                                break;
+                            case "SEPARADOR":
+                                header('location: homeSeparador.php');
+                                break;
+                            case "ENTREGADOR":
+                                header('location: homeEntregador.php');
+                                break;
+                          }
+                          
                       }                     
                //}         
         }      

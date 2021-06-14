@@ -27,8 +27,10 @@
       $Produtos -> execute();
       //Consultando a tabela pedodo para saber quantos pedidos tem e definir o proxímo id
       $buscaPedidos = $minhaConexao->prepare("select * from pedidos");
+      $buscaPedidos -> execute();
       $contaPedidos = $buscaPedidos ->rowCount();
       $proximoPedido = $contaPedidos + 1;
+      
        //Inserindo novo pedido 
         $a = false;
       ?>

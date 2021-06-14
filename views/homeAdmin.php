@@ -21,7 +21,7 @@
 <body class="corfundo">
 
     <!--CABEÇALHO-->
-    <?php require "barraNavegacao.php"; 
+    <?php require "barraNavegacaoADM.php"; 
       //Todos os pedidos
       $Pedidos = $minhaConexao->prepare("select * from pedidos");
       $Pedidos -> execute();

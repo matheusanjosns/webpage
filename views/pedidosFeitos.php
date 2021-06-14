@@ -62,13 +62,14 @@
                 <td data-titulo="Data da Entrega"><?php echo $dataEntrega ?></td>
                 <td data-titulo="Avaliação"><?php if($situacao == "Entregue" && $avaliacao == ""){ ?>
                     <div class="d-inline-flex">
-                        <form class="row" action="">
-                            <select class="form-select" aria-label="Default select example">
-                                <option value="5" selected>Excelente</option>
-                                <option value="4">Bom</option>
-                                <option value="3">Regular</option>
-                                <option value="2">Ruim</option>
-                                <option value="1">Pessímo</option>
+                        <form class="row" action="acoesCarrinho.php" method="POST">
+                            <input type="hidden" name="idAvaliacao" value="<?php echo $pedido ?>">
+                            <select class="form-select" name="Avaliacao">
+                                <option value="'Excelente'" selected>Excelente</option>
+                                <option value="'Bom'">Bom</option>
+                                <option value="'Regular'">Regular</option>
+                                <option value="'Ruim'">Ruim</option>
+                                <option value="'Pessímo'">Pessímo</option>
                             </select>
                             <button class="btn btn-success">Avaliar</button>
                         </form>

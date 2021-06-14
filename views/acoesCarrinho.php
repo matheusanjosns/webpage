@@ -83,4 +83,52 @@
             header('location: homeEntregador.php');
         }
     }
+
+    //cadastra usuario pelo adm
+    if(isset($_POST["PERMISSAO"])){
+    
+        $CPF = utf8_decode($_POST["CPFAdm"]);
+        $NOME = utf8_decode($_POST["NOMEAdm"]);
+        $SENHA = utf8_decode($_POST["SENHAAdm"]);
+        $EMAIL = utf8_decode($_POST["EMAILAdm"]);
+        $ENDERECO = $_POST["ENDERECOAdm"];
+        $NASCIMENTO = $_POST["NASCIMENTOAdm"];
+        $CEP = $_POST["CEPAdm"];
+        $CIDADE = $_POST["CIDADEAdm"];
+        $BAIRRO = $_POST["BAIRROAdm"];
+        $ESTADO = $_POST["ESTADOAdm"];
+        $PERMISSAO = $_POST["PERMISSAO"];
+    
+    
+            
+        $sql = $minhaConexao->prepare("INSERT INTO USUARIOS (cpfUser, nomeUser, senhaUser, emailUser, endereco, cidade, dataNasc, permissaoUser, cep, estado, bairro) VALUES(:cpfUser, :nomeUser, :senhaUser, :emailUser, :endereco, :cidade, :dataNasc, :permissaoUser, :cep, :estado, :bairro)");
+        $sql->execute(array(
+          ':cpfUser' => $CPF,
+          ':nomeUser' => $NOME,
+          ':senhaUser' => $SENHA,
+          ':emailUser' => $EMAIL,
+          ':endereco' => $ENDERECO,
+          ':cidade' => $CIDADE,
+          ':dataNasc' => $NASCIMENTO,
+          ':permissaoUser' => $PERMISSAO,
+          ':cep' => $CEP,
+          ':estado' => $ESTADO,
+          ':bairro' => $BAIRRO,
+          )); 
+          header('location: cadastrados.php');
+        
+    }
+
+    //Avalia Pedido
+        if(isset($_POST["Avaliacao"])){ 
+            $avaliacao = $_POST["Avaliacao"];
+            $idavaliacao = $_POST["idAvaliacao"];
+
+            $sql = $minhaConexao->prepare("UPDATE pedidos SET avaliacao = :avaliacao WHERE (idpedido = :idpedido);");
+            $sql->execute(array(
+            ':avaliacao' => $avaliacao,
+            ':idpedido' => $idavaliacao
+            )); 
+            header('location: pedidosFeitos.php');
+        }
 ?>

@@ -84,6 +84,10 @@
             $usuariosDAO = new UsuariosDAO();
             $usuariosDAO->cadUser($this);
        }
+        public function cadUserAdm(){
+            $usuariosDAO = new UsuariosDAO();
+            $usuariosDAO->cadUser($this);
+       }
         public function loginUser(){
             $usuariosDAO = new UsuariosDAO();
             $usuariosDAO->loginUser($this);
