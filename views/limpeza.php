@@ -3,7 +3,7 @@
   require_once "../model/Conexao.php";
   $minhaConexao = Conexao::getConexao(); 
   $user = $_SESSION["USER_PORTAL"];
-  echo $user;
+  
         if( !isset($_SESSION["USER_PORTAL"]) ) {
             //header("location:home.php");
         } 
@@ -43,7 +43,7 @@
       $prodId = $_POST["Prod_id"];
       $user = $_SESSION["USER_PORTAL"];
      
-      $checaCar = $minhaConexao->prepare("SELECT * FROM carrinho WHERE produto_idProduto = {$prodId} && usuarios_cpfUser = {$user}");
+      $checaCar = $minhaConexao->prepare("SELECT * FROM carrinho WHERE produto_idProduto = {$prodId} && usuarios_cpfUser = '{$user}'");
 
       $con_checaCar = $checaCar-> execute();
 
@@ -53,10 +53,10 @@
 
       }else {
           $contaItem = $checaCar->rowCount();
-          echo $contaItem;
+          
       }
       if($contaItem == 0){
-          $inserirCar = $minhaConexao->prepare("INSERT INTO carrinho (usuarios_cpfUser, produto_idProduto, qtdCar) values ({$user}, {$prodId}, 1) ");
+          $inserirCar = $minhaConexao->prepare("INSERT INTO carrinho (usuarios_cpfUser, produto_idProduto, qtdCar) values ('{$user}', {$prodId}, 1) ");
           //echo $inserirCar;
           $operacao_inserirCar = $inserirCar->execute();
           
@@ -66,13 +66,13 @@
               //header("Refresh: 0");
           }
       }else if($contaItem == 1){
-          $buscaCar = $minhaConexao->prepare("SELECT qtdCar from carrinho where usuarios_cpfUser = {$user} && produto_idProduto = {$prodId} ");
+          $buscaCar = $minhaConexao->prepare("SELECT qtdCar from carrinho where usuarios_cpfUser = '{$user}' && produto_idProduto = {$prodId} ");
           //echo $buscaCar;
           $conQtdItemCar = $buscaCar->execute();
           $qtdItemCar = $buscaCar->fetch(PDO::FETCH_ASSOC);
           $aux = $qtdItemCar['qtdCar'] + 1;
 
-          $aumentaQtdItem = $minhaConexao->prepare("UPDATE carrinho SET qtdCar = {$aux} WHERE usuarios_cpfUser = {$user} && produto_idProduto = {$prodId} "); 
+          $aumentaQtdItem = $minhaConexao->prepare("UPDATE carrinho SET qtdCar = {$aux} WHERE usuarios_cpfUser = '{$user}' && produto_idProduto = {$prodId} "); 
           //echo $aumentaQtdItem;
           $addItemCar = $aumentaQtdItem->execute();
           

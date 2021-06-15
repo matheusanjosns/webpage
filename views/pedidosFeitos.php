@@ -23,7 +23,7 @@
     <!--CABEÇALHO-->
     <?php require "barraNavegacao.php"; 
       //buscar pedidos
-      $Pedidos = $minhaConexao->prepare("select * from pedidos where usuarios_cpfUser = {$user}");
+      $Pedidos = $minhaConexao->prepare("select * from pedidos where usuarios_cpfUser = '{$user}'");
       $Pedidos -> execute();
       ?>
 

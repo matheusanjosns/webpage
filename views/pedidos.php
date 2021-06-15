@@ -23,7 +23,7 @@
   <!--CABEÇALHO-->
   <?php require "barraNavegacao.php"; 
       //buscar itens do carrinho
-      $Produtos = $minhaConexao->prepare("select * from carrinho where usuarios_cpfUser = {$user}");
+      $Produtos = $minhaConexao->prepare("select * from carrinho where usuarios_cpfUser = '{$user}'");
       $Produtos -> execute();
       //Consultando a tabela pedodo para saber quantos pedidos tem e definir o proxímo id
       $buscaPedidos = $minhaConexao->prepare("select * from pedidos");
@@ -70,9 +70,9 @@
                         $idProduto = $listaProduto['produto_idProduto'];
                         $qtd = $listaProduto['qtdCar'];
                         if($dadosProduto['promocao'] == 0){
-                          $valor = number_format($dadosProduto['valorProduto'],2, ',', '.');
+                          $valor = $dadosProduto['valorProduto'];
                         }else{
-                          $valor = number_format($dadosProduto['valorProduto'],2, ',', '.') * 0.8;
+                          $valor = $dadosProduto['valorProduto'] * 0.8;
                         }
                         $totalItem = $valor * $qtd;
                         $valorTotal = $valorTotal + $totalItem;

@@ -42,7 +42,7 @@
       $prodId = $_POST["Prod_id"];
       $user = $_SESSION["USER_PORTAL"];
      
-      $checaCar = $minhaConexao->prepare("SELECT * FROM carrinho WHERE produto_idProduto = {$prodId} && usuarios_cpfUser = {$user}");
+      $checaCar = $minhaConexao->prepare("SELECT * FROM carrinho WHERE produto_idProduto = {$prodId} && usuarios_cpfUser = '{$user}'");
 
       $con_checaCar = $checaCar-> execute();
 
@@ -54,20 +54,20 @@
           $contaItem = $checaCar->rowCount();
       }
       if($contaItem == 0){
-          $inserirCar = $minhaConexao->prepare("INSERT INTO carrinho (usuarios_cpfUser, produto_idProduto, qtdCar) values ({$user}, {$prodId}, 1) ");
+          $inserirCar = $minhaConexao->prepare("INSERT INTO carrinho (usuarios_cpfUser, produto_idProduto, qtdCar) values ('{$user}', {$prodId}, 1) ");
           $operacao_inserirCar = $inserirCar->execute();
           
           if(!$operacao_inserirCar){
            die("Erro na consulta");   
           }
       }else if($contaItem == 1){
-          $buscaCar = $minhaConexao->prepare("SELECT qtdCar from carrinho where usuarios_cpfUser = {$user} && produto_idProduto = {$prodId} ");
+          $buscaCar = $minhaConexao->prepare("SELECT qtdCar from carrinho where usuarios_cpfUser = '{$user}' && produto_idProduto = {$prodId} ");
           //echo $buscaCar;
           $conQtdItemCar = $buscaCar->execute();
           $qtdItemCar = $buscaCar->fetch(PDO::FETCH_ASSOC);
           $aux = $qtdItemCar['qtdCar'] + 1;
 
-          $aumentaQtdItem = $minhaConexao->prepare("UPDATE carrinho SET qtdCar = {$aux} WHERE usuarios_cpfUser = {$user} && produto_idProduto = {$prodId} "); 
+          $aumentaQtdItem = $minhaConexao->prepare("UPDATE carrinho SET qtdCar = {$aux} WHERE usuarios_cpfUser = '{$user}' && produto_idProduto = {$prodId} "); 
           $addItemCar = $aumentaQtdItem->execute();
           
           if(!$con_checaCar){

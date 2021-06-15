@@ -8,11 +8,6 @@
             $url =  strtoupper($_GET['url']);
 			echo ($url);
     		switch ($url){
-	    		//case "NOVOLIVRO":
-					//require "controller/ControladorFormLivro.php";    
-				    //$controlador = new ControladorFormLivro();
-					//$controlador->processaRequisicao();
-					//break;
 				case "VIEWS/CADUSER":
 					require "controller/ControladorNovoUsuario.php";    
 					$controlador = new ControladorNovoUsuario();

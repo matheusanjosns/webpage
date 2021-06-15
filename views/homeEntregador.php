@@ -42,7 +42,7 @@
         <tbody>
 
             <?php 
-                $pedidoEntregador = $minhaConexao->prepare("select * from entrega where usuarios_cpfUser = {$user}");
+                $pedidoEntregador = $minhaConexao->prepare("select * from entrega where usuarios_cpfUser = '{$user}'");
                 $pedidoEntregador -> execute();
                 while($lista = $pedidoEntregador->fetch(PDO::FETCH_ASSOC)){ 
                     $pedidoEntrega = $lista['pedidos_idpedido'];
