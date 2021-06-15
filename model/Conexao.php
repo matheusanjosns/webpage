@@ -3,7 +3,7 @@
 class Conexao{
     public static function getConexao(){
         
-        $servername = "localhost:3306"; 
+        $servername = "localhost:3308"; 
         $username = "root";
         $password = "";
         $dbname = "mydb";
