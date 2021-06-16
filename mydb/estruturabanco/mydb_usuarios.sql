@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: mydb
 -- ------------------------------------------------------
--- Server version	5.7.14
+-- Server version	8.0.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -44,7 +44,6 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('123.456.789-09','Fabio','54321','separador@compracerta.com','2021-06-01','SEPARADOR','Rua Afonso Celso','BA','Salvador','Barra','40140080'),('123.456.789-10','Juliana','12345','admin@compracerta.com','1997-02-19','ADM','Rua Professor Lemos Brito','BA','Salvador','Barra','40140-090'),('2','José Maria Xavier','12345','abc@abc.com','2000-02-10','CLIENTE','Travessa Pedro Lopes','BA','Salvador','Praia Grande','40725120'),('5','Marcos','123','entregador@compracerta.com','2000-05-15','ENTREGADOR','Travessa Pedro Lopes','BA','Salvador','Praia Grande','40725120'),('694.068.585-50','Xavier','admin','abc@abc.com','1990-03-01','CLIENTE','Rua A','BA','Salvador','Barra','40140-095');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-14 17:17:11
+-- Dump completed on 2021-06-16 19:45:53

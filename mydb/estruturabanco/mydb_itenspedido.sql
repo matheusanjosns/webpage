@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: mydb
 -- ------------------------------------------------------
--- Server version	5.7.14
+-- Server version	8.0.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,18 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `categoria`
+-- Table structure for table `itenspedido`
 --
 
-DROP TABLE IF EXISTS `categoria`;
+DROP TABLE IF EXISTS `itenspedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `categoria` (
-  `idCat` int(11) NOT NULL AUTO_INCREMENT,
-  `nomeCat` varchar(35) NOT NULL,
-  PRIMARY KEY (`idCat`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `itenspedido` (
+  `idItem` int NOT NULL AUTO_INCREMENT,
+  `qtdProduto` int NOT NULL,
+  `valorUnd` varchar(45) NOT NULL,
+  `valorTotal` varchar(45) NOT NULL,
+  `produto_idProduto` int NOT NULL,
+  `id_pedido` int NOT NULL,
+  PRIMARY KEY (`idItem`),
+  KEY `fk_itensPedido_produto1_idx` (`produto_idProduto`),
+  CONSTRAINT `fk_itensPedido_produto1` FOREIGN KEY (`produto_idProduto`) REFERENCES `produto` (`idProduto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `itenspedido`
+--
+
+LOCK TABLES `itenspedido` WRITE;
+/*!40000 ALTER TABLE `itenspedido` DISABLE KEYS */;
+/*!40000 ALTER TABLE `itenspedido` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -38,4 +53,4 @@ CREATE TABLE `categoria` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-14 17:17:55
+-- Dump completed on 2021-06-16 19:45:51

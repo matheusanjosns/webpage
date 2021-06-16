@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: mydb
 -- ------------------------------------------------------
--- Server version	5.7.14
+-- Server version	8.0.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,16 +23,26 @@ DROP TABLE IF EXISTS `entrega`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `entrega` (
-  `idEntrega` int(11) NOT NULL AUTO_INCREMENT,
+  `idEntrega` int NOT NULL AUTO_INCREMENT,
   `usuarios_cpfUser` varchar(35) NOT NULL,
-  `pedidos_idpedido` int(11) NOT NULL,
+  `pedidos_idpedido` int NOT NULL,
   PRIMARY KEY (`idEntrega`),
   KEY `fk_entrega_usuarios1_idx` (`usuarios_cpfUser`),
   KEY `fk_entrega_pedidos1_idx` (`pedidos_idpedido`),
-  CONSTRAINT `fk_entrega_pedidos1` FOREIGN KEY (`pedidos_idpedido`) REFERENCES `pedidos` (`idpedido`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_entrega_usuarios1` FOREIGN KEY (`usuarios_cpfUser`) REFERENCES `usuarios` (`cpfUser`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_entrega_pedidos1` FOREIGN KEY (`pedidos_idpedido`) REFERENCES `pedidos` (`idpedido`),
+  CONSTRAINT `fk_entrega_usuarios1` FOREIGN KEY (`usuarios_cpfUser`) REFERENCES `usuarios` (`cpfUser`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `entrega`
+--
+
+LOCK TABLES `entrega` WRITE;
+/*!40000 ALTER TABLE `entrega` DISABLE KEYS */;
+INSERT INTO `entrega` VALUES (1,'111.111.111-14',1),(2,'111.111.111-14',2),(3,'111.111.111-14',3),(4,'111.111.111-14',5),(5,'111.111.111-14',4);
+/*!40000 ALTER TABLE `entrega` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -43,4 +53,4 @@ CREATE TABLE `entrega` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-14 17:17:56
+-- Dump completed on 2021-06-16 19:34:22
