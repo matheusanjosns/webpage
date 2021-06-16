@@ -53,7 +53,7 @@
 
       }else {
           $contaItem = $checaCar->rowCount();
-          echo $contaItem;
+          //echo $contaItem;
       }
       if($contaItem == 0){
           $inserirCar = $minhaConexao->prepare("INSERT INTO carrinho (usuarios_cpfUser, produto_idProduto, qtdCar) values ('{$user}', {$prodId}, 1) ");
@@ -115,7 +115,7 @@
               <div class="card-body">
                 <p class="card-text"><?php echo $listaProdutoPromo['nomeProduto'] ?></p>
                 <h4><s>DE: R$ <?php echo number_format($listaProdutoPromo['valorProduto'],2, ',', '.') ?></s></h4>
-                <?php $desconto = 0.8 * number_format($listaProdutoPromo['valorProduto'],2, ',', '.'); ?>
+                <?php $desconto = 0.8 * $listaProdutoPromo['valorProduto']?>
                 <h5>POR: R$ <?php echo number_format($desconto,2, ',', '.') ?></h5>
                 <form action="hortfruit.php" method="POST">
               <input type="hidden" name="Prod_id" value="<?php echo $listaProdutoPromo['idProduto'] ?>">

@@ -21,7 +21,7 @@ class ControladorNovoProduto implements IControlador{
       
       $this->produto->cadProduto();
  
-      //header('Location:homeADM.php', true,302);
+      header('Location:homeAdmin.php', true,302);
    }
 }
    

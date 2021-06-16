@@ -55,7 +55,7 @@
      $id = $_GET["codigo"];
      $valorPedido = 0;
       //Consultando itens do pedido
-      $busca = $minhaConexao->prepare("SELECT * from itenspedido where id_pedido = {$id}");
+      $busca = $minhaConexao->prepare("SELECT * from itenspedido where id_pedido = '{$id}'");
       $busca ->execute();
       ?>
       
@@ -101,11 +101,11 @@
         </tbody>
     </table>
     <?php 
-        $Pedido = $minhaConexao->prepare("SELECT * from pedidos where idpedido = {$id}");
+        $Pedido = $minhaConexao->prepare("SELECT * from pedidos where idpedido = '{$id}'");
         $Pedido -> execute();
         $dadosPedido = $Pedido->fetch(PDO::FETCH_ASSOC);
         $idcomprador = $dadosPedido['usuarios_cpfUser'];
-        $Comprador = $minhaConexao->prepare("SELECT * from usuarios where cpfUser = {$idcomprador}");
+        $Comprador = $minhaConexao->prepare("SELECT * from usuarios where cpfUser = '{$idcomprador}'");
         $Comprador -> execute();
         $dadosComprador = $Comprador->fetch(PDO::FETCH_ASSOC);
         $endereco = $dadosComprador['endereco'];

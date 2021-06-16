@@ -4,7 +4,7 @@
   $minhaConexao = Conexao::getConexao(); ?> 
   
     <!--CABEÇALHO-->   
-    <?php require "barraNavegacao.php"; ?>
+    <?php require "barraNavegacaoADM.php"; ?>
     <!--CABEÇALHO-->
     <?php 
 
@@ -34,10 +34,11 @@
     <div class="col-7">
         <label for="inputAddress2" class="form-label">IMAGEM</label>
         
-        <form action="cadastroProd.php" method="post" enctype="multipart/form-data">
+        <form action="cadastroProd.php"  method="post" enctype="multipart/form-data">
             <input type="hidden" name="MAX_FILE_SIZE" Value="1000000" >
-            <div class="row">
-              <div class="col-9"><input type="file" class="form-control" id="inputAddress2"  name="IMG"></div>
+            <div class="row">           
+              <div class="col-9" ><input type="file" class="form-control" id="inputAddress2" name="IMG"></div>
+              <A>OBS! AO ESCOLHER IMAGEM, CLICAR EM CONFIRMAR!!</A>
               <div class="col-3"><input type="submit" name="enviar" value="Confirmar"></div>
             </div>
             

@@ -56,9 +56,9 @@
     if(isset($_POST["idPedido"])){
         $Id = $_POST["idPedido"];
         $entregador = $_POST["Entregador"]; 
-        $entrega = $minhaConexao->prepare("INSERT INTO entrega (usuarios_cpfUser, pedidos_idpedido) VALUES ({$entregador}, {$Id})");
+        $entrega = $minhaConexao->prepare("INSERT INTO entrega (usuarios_cpfUser, pedidos_idpedido) VALUES ('{$entregador}', '{$Id}')");
         $con_entrega = $entrega-> execute();
-        $transito = $minhaConexao->prepare("UPDATE pedidos SET situacao = 'Em transito' WHERE (`idpedido` = {$Id});");
+        $transito = $minhaConexao->prepare("UPDATE pedidos SET situacao = 'Em transito' WHERE (`idpedido` = '{$Id}');");
         $transito-> execute();
         
         if(!$con_entrega){
@@ -71,7 +71,7 @@
     if(isset($_POST["numPedido"])){
         $Id = $_POST["numPedido"];
         $data = date('Y/m/d H:i:s');
-        $confirmarEntrega = $minhaConexao->prepare("UPDATE pedidos SET  dataEntrega = :dataEntrega, situacao = :situacao WHERE (idpedido = {$Id});");
+        $confirmarEntrega = $minhaConexao->prepare("UPDATE pedidos SET  dataEntrega = :dataEntrega, situacao = :situacao WHERE (idpedido = '{$Id}');");
         $entregue = $confirmarEntrega-> execute(array(
             ':situacao' => 'Entregue',
             ':dataEntrega' => $data,

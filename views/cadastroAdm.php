@@ -8,7 +8,7 @@
           if( !isset($_SESSION["USER_PORTAL"]) ) {
               //header("location:home.php");
           } 
-    require "barraNavegacao.php"; 
+    require "barraNavegacaoADM.php"; 
      
     
     ?>

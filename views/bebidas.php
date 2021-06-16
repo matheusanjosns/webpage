@@ -43,7 +43,7 @@
        $prodId = $_POST["Prod_id"];
        $user = $_SESSION["USER_PORTAL"];
       
-       $checaCar = $minhaConexao->prepare("SELECT * FROM carrinho WHERE produto_idProduto = {$prodId} && usuarios_cpfUser = ''{$user}''");
+       $checaCar = $minhaConexao->prepare("SELECT * FROM carrinho WHERE produto_idProduto = {$prodId} && usuarios_cpfUser = '{$user}'");
  
        $con_checaCar = $checaCar-> execute();
  
@@ -121,7 +121,7 @@
                           <p class="card-text"><?php echo $listaProdutoPromo['nomeProduto'] ?></p>
                           <h4><s>DE: R$ <?php echo number_format($listaProdutoPromo['valorProduto'],2, ',', '.') ?></s>
                           </h4>
-                          <?php $desconto = 0.8 * number_format($listaProdutoPromo['valorProduto'],2, ',', '.'); ?>
+                          <?php $desconto = 0.8 * $listaProdutoPromo['valorProduto'] ?>
                           <h5>POR: R$ <?php echo number_format($desconto,2, ',', '.') ?></h5>
                           <form action="bebidas.php" method="POST">
                               <input type="hidden" name="Prod_id" value="<?php echo $listaProdutoPromo['idProduto'] ?>">
